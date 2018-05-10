@@ -55,6 +55,12 @@
     <Compile Include="DataModel.cs" />
     <Compile Include="DBMySQLUtils.cs" />
     <Compile Include="DBUtils.cs" />
+    <Compile Include="ReportBug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportBug.Designer.cs">
+      <DependentUpon>ReportBug.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportBug.resx">
+      <DependentUpon>ReportBug.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +87,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -91,6 +101,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login-button-png-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

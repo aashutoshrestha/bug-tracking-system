@@ -30,8 +30,9 @@ namespace BugTrackingSystem
            
             this.usernamemessage = getUsernameMessage();
             this.passwordmessage = getPasswordMessage();
-
-
+           
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            
 
         }
 
@@ -89,14 +90,33 @@ namespace BugTrackingSystem
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
+            
+
+
+
+        }
+
+        private void Password_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
             setUsername(this.txtusername.Text);
             setPassword(this.txtpassword.Text);
-            usercontroller.LoginUser(getUsername(), getPassword());
-           
-           
+            bool flag = usercontroller.LoginUser(getUsername(), getPassword());
+            if (flag == true)
+            {
 
+                this.Hide();
 
-
+            }
+            else
+            {
+                this.setPasswordMessage("Username and Password do not match");
+                this.Refresh();
+            }
         }
     }
 }

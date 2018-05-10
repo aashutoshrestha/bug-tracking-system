@@ -12,13 +12,17 @@ namespace BugTrackingSystem
 {
     class UserController
     {
-        
+
+
+        private String sessionusername;
+
+
 
 
         //User Login
-        public void LoginUser(String username,String password) 
+        public bool LoginUser(String username,String password) 
         {
-            
+            bool flag=false;
             try
             {
                 //query to check if username and password exists
@@ -47,16 +51,19 @@ namespace BugTrackingSystem
                 if (login.Read())
                 {
                     Dashboard dashboard = new Dashboard();
-                    dashboard.Show();
-                    Debug.WriteLine("Logged in");
                     
-
+                    Debug.WriteLine("Logged in");
+                    flag = true;
+                    sessionusername = username;
+                    int location = login.GetOrdinal("pplocation");
+                    dashboard.setProfileimagelocation(login.GetString(location));
+                    dashboard.Show();
                 }
                 else {
                     // home.setPasswordMessage("Username or password do not match");
                     //  home.Refresh();
                     Debug.WriteLine("Username and password do not match");
-                    
+                    flag = false;
                 }
 
             }
@@ -65,7 +72,7 @@ namespace BugTrackingSystem
                 Debug.WriteLine("Error Message: " + e);
                 Debug.WriteLine(e.StackTrace);
             }
-           
+            return flag;
         }
 
        
