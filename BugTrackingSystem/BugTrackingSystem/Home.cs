@@ -28,9 +28,6 @@ namespace BugTrackingSystem
         {
            
            
-            this.usernamemessage = getUsernameMessage();
-            this.passwordmessage = getPasswordMessage();
-           
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             
 
@@ -62,32 +59,7 @@ namespace BugTrackingSystem
         }
 
 
-        //usernamemesasge
-        private String usernamemessage;
-        public void setUsernameMessage(String usernameMessage)
-        {
-            this.usernamemessage = usernameMessage;
-        }
-
-        public String getUsernameMessage()
-        {
-            return usernamemessage;
-        }
-
-
-
-        //passowrdmessage
-        private String passwordmessage;
-        public void setPasswordMessage(String passwordmessage)
-        {
-            this.passwordmessage = passwordmessage;
-        }
-
-        public String getPasswordMessage()
-        {
-            return passwordmessage;
-        }
-
+       
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             
@@ -106,17 +78,54 @@ namespace BugTrackingSystem
             setUsername(this.txtusername.Text);
             setPassword(this.txtpassword.Text);
             bool flag = usercontroller.LoginUser(getUsername(), getPassword());
-            if (flag == true)
-            {
 
-                this.Hide();
+            if (this.txtusername.Text!="") {
 
+                if (flag == true)
+                {
+
+                    this.Hide();
+
+                }
+                else if (flag == false)
+                {
+                    this.txtpassworderror.Text = "Username or Password Do Not Match";
+                    this.txtpassword.ForeColor = Color.Red;
+
+
+                }
+                else
+                {
+                    this.txtpassworderror.Text = "Username or Password Do Not Match";
+                    this.txtpassword.ForeColor = Color.Red;
+
+
+                }
             }
             else
             {
-                this.setPasswordMessage("Username and Password do not match");
-                this.Refresh();
+                this.txtusernameerror.Text = "Username cannot be empty";
             }
+        }
+
+        private void txtusername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpassworderror_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+            this.txtpassword.ForeColor = Color.Black;
+        }
+
+        private void txtusernameerror_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

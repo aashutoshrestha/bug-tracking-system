@@ -44,7 +44,6 @@
             this.txtMethodname = new System.Windows.Forms.TextBox();
             this.txtlinefrom = new System.Windows.Forms.TextBox();
             this.txtlineto = new System.Windows.Forms.TextBox();
-            this.pbscreenshot = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.richtxtbugdesc = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,9 +56,10 @@
             this.txtOS = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtRepoURL = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgsubmit = new System.Windows.Forms.PictureBox();
+            this.pbscreenshot = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imgsubmit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbscreenshot)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -204,14 +204,6 @@
             this.txtlineto.Size = new System.Drawing.Size(100, 20);
             this.txtlineto.TabIndex = 15;
             // 
-            // pbscreenshot
-            // 
-            this.pbscreenshot.Location = new System.Drawing.Point(574, 243);
-            this.pbscreenshot.Name = "pbscreenshot";
-            this.pbscreenshot.Size = new System.Drawing.Size(315, 243);
-            this.pbscreenshot.TabIndex = 16;
-            this.pbscreenshot.TabStop = false;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -226,7 +218,7 @@
             // 
             this.richtxtbugdesc.Location = new System.Drawing.Point(194, 552);
             this.richtxtbugdesc.Name = "richtxtbugdesc";
-            this.richtxtbugdesc.Size = new System.Drawing.Size(300, 147);
+            this.richtxtbugdesc.Size = new System.Drawing.Size(711, 114);
             this.richtxtbugdesc.TabIndex = 18;
             this.richtxtbugdesc.Text = "";
             // 
@@ -320,20 +312,29 @@
             this.txtRepoURL.Size = new System.Drawing.Size(293, 20);
             this.txtRepoURL.TabIndex = 28;
             // 
-            // pictureBox1
+            // imgsubmit
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(194, 705);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 33);
-            this.pictureBox1.TabIndex = 29;
-            this.pictureBox1.TabStop = false;
+            this.imgsubmit.Image = global::BugTrackingSystem.Properties.Resources.submit;
+            this.imgsubmit.Location = new System.Drawing.Point(194, 705);
+            this.imgsubmit.Name = "imgsubmit";
+            this.imgsubmit.Size = new System.Drawing.Size(126, 33);
+            this.imgsubmit.TabIndex = 29;
+            this.imgsubmit.TabStop = false;
+            // 
+            // pbscreenshot
+            // 
+            this.pbscreenshot.Location = new System.Drawing.Point(574, 243);
+            this.pbscreenshot.Name = "pbscreenshot";
+            this.pbscreenshot.Size = new System.Drawing.Size(315, 243);
+            this.pbscreenshot.TabIndex = 16;
+            this.pbscreenshot.TabStop = false;
             // 
             // ReportBug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 750);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.imgsubmit);
             this.Controls.Add(this.txtRepoURL);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtOS);
@@ -366,8 +367,9 @@
             this.Enabled = false;
             this.Name = "ReportBug";
             this.Text = "Report Bug";
+            this.Load += new System.EventHandler(this.ReportBug_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.imgsubmit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbscreenshot)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,6 +406,6 @@
         private System.Windows.Forms.TextBox txtOS;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtRepoURL;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgsubmit;
     }
 }

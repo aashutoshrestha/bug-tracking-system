@@ -48,7 +48,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Console", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Info;
-            this.label1.Location = new System.Drawing.Point(319, 124);
+            this.label1.Location = new System.Drawing.Point(316, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 29);
             this.label1.TabIndex = 0;
@@ -58,17 +58,18 @@
             // txtusername
             // 
             this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusername.Location = new System.Drawing.Point(264, 173);
+            this.txtusername.Location = new System.Drawing.Point(261, 172);
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(266, 40);
             this.txtusername.TabIndex = 1;
+            this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged);
             // 
             // Password
             // 
             this.Password.AutoSize = true;
             this.Password.Font = new System.Drawing.Font("Lucida Console", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password.ForeColor = System.Drawing.SystemColors.Info;
-            this.Password.Location = new System.Drawing.Point(319, 229);
+            this.Password.Location = new System.Drawing.Point(316, 228);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(149, 29);
             this.Password.TabIndex = 2;
@@ -78,11 +79,13 @@
             // txtpassword
             // 
             this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(264, 274);
+            this.txtpassword.Location = new System.Drawing.Point(261, 273);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(266, 40);
             this.txtpassword.TabIndex = 3;
             this.txtpassword.UseSystemPasswordChar = true;
+            this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged);
+            this.txtpassword.MouseHover += new System.EventHandler(this.txtpassword_TextChanged);
             // 
             // menuStrip1
             // 
@@ -118,23 +121,29 @@
             // txtusernameerror
             // 
             this.txtusernameerror.AutoSize = true;
-            this.txtusernameerror.Location = new System.Drawing.Point(513, 173);
+            this.txtusernameerror.Font = new System.Drawing.Font("MS Office Symbol Regular", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusernameerror.ForeColor = System.Drawing.Color.Maroon;
+            this.txtusernameerror.Location = new System.Drawing.Point(550, 182);
             this.txtusernameerror.Name = "txtusernameerror";
-            this.txtusernameerror.Size = new System.Drawing.Size(0, 13);
+            this.txtusernameerror.Size = new System.Drawing.Size(0, 24);
             this.txtusernameerror.TabIndex = 6;
+            this.txtusernameerror.Click += new System.EventHandler(this.txtusernameerror_Click);
             // 
             // txtpassworderror
             // 
             this.txtpassworderror.AutoSize = true;
-            this.txtpassworderror.Location = new System.Drawing.Point(513, 232);
+            this.txtpassworderror.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassworderror.ForeColor = System.Drawing.Color.Maroon;
+            this.txtpassworderror.Location = new System.Drawing.Point(290, 68);
             this.txtpassworderror.Name = "txtpassworderror";
-            this.txtpassworderror.Size = new System.Drawing.Size(0, 13);
+            this.txtpassworderror.Size = new System.Drawing.Size(0, 15);
             this.txtpassworderror.TabIndex = 7;
+            this.txtpassworderror.Click += new System.EventHandler(this.txtpassworderror_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BugTrackingSystem.Properties.Resources.loginbutton;
-            this.pictureBox1.Location = new System.Drawing.Point(264, 322);
+            this.pictureBox1.Location = new System.Drawing.Point(261, 321);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 45);
             this.pictureBox1.TabIndex = 8;
@@ -147,8 +156,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 448);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtpassworderror);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtusernameerror);
             this.Controls.Add(this.txtpassword);
             this.Controls.Add(this.Password);

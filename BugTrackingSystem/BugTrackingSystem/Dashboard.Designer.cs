@@ -31,26 +31,28 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panelMain = new System.Windows.Forms.Panel();
-            this.bugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelUserInfo = new System.Windows.Forms.Panel();
             this.panelDashboard = new System.Windows.Forms.Panel();
-            this.lblsessionusername = new System.Windows.Forms.Label();
-            this.lblaccountinfo = new System.Windows.Forms.Label();
-            this.logout = new System.Windows.Forms.PictureBox();
+            this.panelUserInfo = new System.Windows.Forms.Panel();
             this.profileimg = new System.Windows.Forms.PictureBox();
+            this.lblaccountinfo = new System.Windows.Forms.Label();
+            this.lblsessionusername = new System.Windows.Forms.Label();
+            this.logout = new System.Windows.Forms.PictureBox();
+            this.notificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelUserInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileimg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem});
+            this.newToolStripMenuItem,
+            this.notificationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1225, 24);
@@ -64,6 +66,12 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.newToolStripMenuItem.Text = "New";
+            // 
+            // bugToolStripMenuItem
+            // 
+            this.bugToolStripMenuItem.Name = "bugToolStripMenuItem";
+            this.bugToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.bugToolStripMenuItem.Text = "Bug";
             // 
             // contextMenuStrip1
             // 
@@ -79,11 +87,13 @@
             this.panelMain.Size = new System.Drawing.Size(1225, 558);
             this.panelMain.TabIndex = 2;
             // 
-            // bugToolStripMenuItem
+            // panelDashboard
             // 
-            this.bugToolStripMenuItem.Name = "bugToolStripMenuItem";
-            this.bugToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
-            this.bugToolStripMenuItem.Text = "Bug";
+            this.panelDashboard.Location = new System.Drawing.Point(197, 3);
+            this.panelDashboard.Name = "panelDashboard";
+            this.panelDashboard.Size = new System.Drawing.Size(1025, 555);
+            this.panelDashboard.TabIndex = 1;
+            this.panelDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDashboard_Paint);
             // 
             // panelUserInfo
             // 
@@ -96,25 +106,13 @@
             this.panelUserInfo.Size = new System.Drawing.Size(188, 552);
             this.panelUserInfo.TabIndex = 0;
             // 
-            // panelDashboard
+            // profileimg
             // 
-            this.panelDashboard.Location = new System.Drawing.Point(197, 3);
-            this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(1025, 555);
-            this.panelDashboard.TabIndex = 1;
-            this.panelDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDashboard_Paint);
-            // 
-            // lblsessionusername
-            // 
-            this.lblsessionusername.AutoSize = true;
-            this.lblsessionusername.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsessionusername.ForeColor = System.Drawing.Color.Green;
-            this.lblsessionusername.Location = new System.Drawing.Point(3, 148);
-            this.lblsessionusername.Name = "lblsessionusername";
-            this.lblsessionusername.Size = new System.Drawing.Size(165, 25);
-            this.lblsessionusername.TabIndex = 0;
-            this.lblsessionusername.Text = "SessionUsername";
-            this.lblsessionusername.Click += new System.EventHandler(this.lblsessionusername_Click);
+            this.profileimg.Location = new System.Drawing.Point(34, 3);
+            this.profileimg.Name = "profileimg";
+            this.profileimg.Size = new System.Drawing.Size(119, 130);
+            this.profileimg.TabIndex = 0;
+            this.profileimg.TabStop = false;
             // 
             // lblaccountinfo
             // 
@@ -128,6 +126,18 @@
             this.lblaccountinfo.Text = "Account Info";
             this.lblaccountinfo.Click += new System.EventHandler(this.lblaccountinfo_Click);
             // 
+            // lblsessionusername
+            // 
+            this.lblsessionusername.AutoSize = true;
+            this.lblsessionusername.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsessionusername.ForeColor = System.Drawing.Color.Green;
+            this.lblsessionusername.Location = new System.Drawing.Point(3, 148);
+            this.lblsessionusername.Name = "lblsessionusername";
+            this.lblsessionusername.Size = new System.Drawing.Size(165, 25);
+            this.lblsessionusername.TabIndex = 0;
+            this.lblsessionusername.Text = "SessionUsername";
+            this.lblsessionusername.Click += new System.EventHandler(this.lblsessionusername_Click);
+            // 
             // logout
             // 
             this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
@@ -138,13 +148,11 @@
             this.logout.TabStop = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
-            // profileimg
+            // notificationToolStripMenuItem
             // 
-            this.profileimg.Location = new System.Drawing.Point(34, 3);
-            this.profileimg.Name = "profileimg";
-            this.profileimg.Size = new System.Drawing.Size(119, 130);
-            this.profileimg.TabIndex = 0;
-            this.profileimg.TabStop = false;
+            this.notificationToolStripMenuItem.Name = "notificationToolStripMenuItem";
+            this.notificationToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.notificationToolStripMenuItem.Text = "Notification";
             // 
             // Dashboard
             // 
@@ -163,8 +171,8 @@
             this.panelMain.ResumeLayout(false);
             this.panelUserInfo.ResumeLayout(false);
             this.panelUserInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileimg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +191,6 @@
         private System.Windows.Forms.Label lblsessionusername;
         private System.Windows.Forms.Label lblaccountinfo;
         private System.Windows.Forms.PictureBox profileimg;
+        private System.Windows.Forms.ToolStripMenuItem notificationToolStripMenuItem;
     }
 }

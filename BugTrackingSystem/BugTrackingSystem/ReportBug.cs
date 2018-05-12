@@ -31,5 +31,10 @@ namespace BugTrackingSystem
         {
 
         }
+
+        private void ReportBug_Load(object sender, EventArgs e)
+        {
+            imgsubmit.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
     }
 }
