@@ -79,8 +79,18 @@ namespace BugTrackingSystem
             setPassword(this.txtpassword.Text);
             bool flag = usercontroller.LoginUser(getUsername(), getPassword());
 
-            if (this.txtusername.Text!="") {
+            if (this.txtusername.Text=="") {
 
+                this.txtusernameerror.Text = "Username cannot be empty";
+                this.txtpassworderror.Text = "";
+            }
+            else if (this.txtpassword.Text=="")
+            {
+                this.txtpassworderror.Text = "Password cannot be empty";
+                this.txtusernameerror.Text = "";
+            }
+            else
+            {
                 if (flag == true)
                 {
 
@@ -101,10 +111,7 @@ namespace BugTrackingSystem
 
 
                 }
-            }
-            else
-            {
-                this.txtusernameerror.Text = "Username cannot be empty";
+                
             }
         }
 

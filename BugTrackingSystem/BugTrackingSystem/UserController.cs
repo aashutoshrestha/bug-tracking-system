@@ -50,14 +50,34 @@ namespace BugTrackingSystem
 
                 if (login.Read())
                 {
-                    Dashboard dashboard = new Dashboard();
-                    
-                    Debug.WriteLine("Logged in");
-                    flag = true;
                     sessionusername = username;
                     int location = login.GetOrdinal("pplocation");
-                    dashboard.setProfileimagelocation(login.GetString(location));
-                    dashboard.Show();
+                    int role = login.GetOrdinal("role");
+
+                    //Open Project Manager Dashboard
+                    if (login.GetString(role)=="projectmanager")
+                    {
+                        populatePMDashboard();
+                        flag = true;
+                        
+                       
+                    }
+                    else if (login.GetString(role)=="developer")
+                    {
+                        DeveloperDashboard ddashboard = new DeveloperDashboard();
+                        flag = true;
+                        ddashboard.Show();
+                       
+                    }
+                    else if (login.GetString(role) == "tester")
+                    {
+                        TesterDashboard tdashboard = new TesterDashboard();
+                        flag = true;
+                        tdashboard.sessionusername = username;
+                        tdashboard.Show();
+
+                    }
+
                 }
                 else {
                     // home.setPasswordMessage("Username or password do not match");
@@ -75,6 +95,43 @@ namespace BugTrackingSystem
             return flag;
         }
 
-       
+
+
+        //populate project manager dashboard
+        public void populatePMDashboard()
+        {
+            try
+            {
+                String sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug";
+
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                MyAdapter.SelectCommand = cmd;
+                DataTable dTable = new DataTable();
+                MyAdapter.Fill(dTable);
+
+                ProjectManagerDashboard pmdashboard = new ProjectManagerDashboard();
+                pmdashboard.dtable = dTable;
+
+                pmdashboard.Show();
+                Debug.WriteLine("Logged in");
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+        }
     }
+
 }
