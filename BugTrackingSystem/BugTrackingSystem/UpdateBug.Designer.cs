@@ -30,19 +30,21 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lblrequest = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.lbllastupdateon = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.lbllastupdatedby = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtdesc = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.txtpreviousecode = new System.Windows.Forms.RichTextBox();
+            this.txtupdatecode = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.txtremarks = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtversion = new System.Windows.Forms.TextBox();
             this.submit = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.submit)).BeginInit();
             this.SuspendLayout();
@@ -68,18 +70,19 @@
             this.cmbStatus.Size = new System.Drawing.Size(121, 21);
             this.cmbStatus.TabIndex = 1;
             // 
-            // linkLabel1
+            // lblrequest
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.linkLabel1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel1.Location = new System.Drawing.Point(351, 40);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(401, 18);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "!Request Project Manager to Assign new Developer!";
+            this.lblrequest.AutoSize = true;
+            this.lblrequest.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblrequest.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblrequest.LinkColor = System.Drawing.Color.Red;
+            this.lblrequest.Location = new System.Drawing.Point(351, 40);
+            this.lblrequest.Name = "lblrequest";
+            this.lblrequest.Size = new System.Drawing.Size(401, 18);
+            this.lblrequest.TabIndex = 2;
+            this.lblrequest.TabStop = true;
+            this.lblrequest.Text = "!Request Project Manager to Assign new Developer!";
+            this.lblrequest.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label2
             // 
@@ -99,6 +102,7 @@
             this.lbllastupdateon.TabIndex = 4;
             this.lbllastupdateon.TabStop = true;
             this.lbllastupdateon.Text = "Unknown";
+            this.lbllastupdateon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbllastupdateon_LinkClicked);
             // 
             // label3
             // 
@@ -128,13 +132,14 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Bug Description";
             // 
-            // richTextBox1
+            // txtdesc
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(157, 178);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(649, 96);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.txtdesc.Location = new System.Drawing.Point(157, 178);
+            this.txtdesc.Name = "txtdesc";
+            this.txtdesc.ReadOnly = true;
+            this.txtdesc.Size = new System.Drawing.Size(649, 96);
+            this.txtdesc.TabIndex = 8;
+            this.txtdesc.Text = "";
             // 
             // label5
             // 
@@ -145,21 +150,22 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Previous Source Code";
             // 
-            // richTextBox2
+            // txtpreviousecode
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(157, 300);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(649, 180);
-            this.richTextBox2.TabIndex = 10;
-            this.richTextBox2.Text = "";
+            this.txtpreviousecode.Location = new System.Drawing.Point(157, 300);
+            this.txtpreviousecode.Name = "txtpreviousecode";
+            this.txtpreviousecode.ReadOnly = true;
+            this.txtpreviousecode.Size = new System.Drawing.Size(649, 180);
+            this.txtpreviousecode.TabIndex = 10;
+            this.txtpreviousecode.Text = "";
             // 
-            // richTextBox3
+            // txtupdatecode
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(157, 486);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(649, 174);
-            this.richTextBox3.TabIndex = 11;
-            this.richTextBox3.Text = "";
+            this.txtupdatecode.Location = new System.Drawing.Point(157, 486);
+            this.txtupdatecode.Name = "txtupdatecode";
+            this.txtupdatecode.Size = new System.Drawing.Size(649, 174);
+            this.txtupdatecode.TabIndex = 11;
+            this.txtupdatecode.Text = "";
             // 
             // label6
             // 
@@ -170,13 +176,13 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Updated Source Code";
             // 
-            // richTextBox4
+            // txtremarks
             // 
-            this.richTextBox4.Location = new System.Drawing.Point(157, 696);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(649, 96);
-            this.richTextBox4.TabIndex = 13;
-            this.richTextBox4.Text = "";
+            this.txtremarks.Location = new System.Drawing.Point(157, 696);
+            this.txtremarks.Name = "txtremarks";
+            this.txtremarks.Size = new System.Drawing.Size(649, 96);
+            this.txtremarks.TabIndex = 13;
+            this.txtremarks.Text = "";
             // 
             // label7
             // 
@@ -186,6 +192,22 @@
             this.label7.Size = new System.Drawing.Size(199, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Remarks/ What was updated and Why?";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Version";
+            // 
+            // txtversion
+            // 
+            this.txtversion.Location = new System.Drawing.Point(157, 95);
+            this.txtversion.Name = "txtversion";
+            this.txtversion.Size = new System.Drawing.Size(121, 20);
+            this.txtversion.TabIndex = 17;
             // 
             // submit
             // 
@@ -202,20 +224,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 836);
+            this.Controls.Add(this.txtversion);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.submit);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.richTextBox4);
+            this.Controls.Add(this.txtremarks);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.richTextBox3);
-            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.txtupdatecode);
+            this.Controls.Add(this.txtpreviousecode);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtdesc);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbllastupdatedby);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbllastupdateon);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.lblrequest);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.label1);
             this.Name = "UpdateBug";
@@ -231,19 +255,21 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lblrequest;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel lbllastupdateon;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel lbllastupdatedby;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtdesc;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox txtpreviousecode;
+        private System.Windows.Forms.RichTextBox txtupdatecode;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.RichTextBox txtremarks;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox submit;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtversion;
     }
 }

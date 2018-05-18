@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,9 +15,67 @@ namespace BugTrackingSystem
         String summary,version, severity, os, classname, method,  vcurl, bugdesc,code;
         int component_id, linenofrom, linenoto;
         String imglocation;
-        int bug_id;
+        int bug_id,history_id;
+        String updatedby;
         String status;
        System.Drawing.Image screenshot;
+        String assiegnedto;
+        String projectname, componentname;
+        String username,remarks;
+       public DataTable dtable;
+
+        public void setRemarks(String remarks)
+        {
+            this.remarks = remarks;
+        }
+
+        public String getRemarks()
+        {
+            return remarks;
+        }
+
+
+
+        public void setUsername(String username)
+        {
+            this.username = username;
+        }
+
+        public String getUsername()
+        {
+            return username;
+        }
+
+        public void setProjectName(String projectname)
+        {
+            this.projectname = projectname;
+        }
+
+        public String getProjectName()
+        {
+            return projectname;
+        }
+
+
+        public void setComponentName(String componentname)
+        {
+            this.componentname = componentname;
+        }
+
+        public String getComponentName()
+        {
+            return componentname;
+        }
+
+        public void setAssignedTo(String assignedto)
+        {
+            this.assiegnedto = assignedto;
+        }
+
+        public String getAssignedTo()
+        {
+            return assiegnedto;
+        }
 
         public void setImageLocation(String imagelocation) {
             this.imglocation = imagelocation;

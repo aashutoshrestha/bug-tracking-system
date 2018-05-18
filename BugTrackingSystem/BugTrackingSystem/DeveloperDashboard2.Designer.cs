@@ -29,29 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panelMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblusername = new System.Windows.Forms.Label();
             this.btnsearchbug = new System.Windows.Forms.Button();
             this.txtsearchbug = new System.Windows.Forms.TextBox();
+            this.logout = new System.Windows.Forms.PictureBox();
             this.panelDashboard = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.richremarks = new System.Windows.Forms.RichTextBox();
-            this.lblversion = new System.Windows.Forms.LinkLabel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtcomponent = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtclassname = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtmethodname = new System.Windows.Forms.TextBox();
-            this.txtproject = new System.Windows.Forms.TextBox();
-            this.txtlinefrom = new System.Windows.Forms.TextBox();
-            this.txtlineto = new System.Windows.Forms.TextBox();
             this.btnassignbug = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtdeveloperusername = new System.Windows.Forms.TextBox();
@@ -59,6 +47,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblbugstatus = new System.Windows.Forms.LinkLabel();
             this.label7 = new System.Windows.Forms.Label();
+            this.imgbugseverity = new System.Windows.Forms.PictureBox();
             this.richsourcecode = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lbllastupdatedby = new System.Windows.Forms.LinkLabel();
@@ -69,18 +58,60 @@
             this.label2 = new System.Windows.Forms.Label();
             this.richbugdesc = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.datagridviewpmdashboard = new System.Windows.Forms.DataGridView();
-            this.logout = new System.Windows.Forms.PictureBox();
-            this.imgbugseverity = new System.Windows.Forms.PictureBox();
             this.imgscreenshot = new System.Windows.Forms.PictureBox();
+            this.datagridviewpmdashboard = new System.Windows.Forms.DataGridView();
+            this.txtlineto = new System.Windows.Forms.TextBox();
+            this.txtlinefrom = new System.Windows.Forms.TextBox();
+            this.txtproject = new System.Windows.Forms.TextBox();
+            this.txtmethodname = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtclassname = new System.Windows.Forms.TextBox();
+            this.txtcomponent = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.menuStrip1.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
+            this.panelDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).BeginInit();
             this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.notificationToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1225, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bugToolStripMenuItem});
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // bugToolStripMenuItem
+            // 
+            this.bugToolStripMenuItem.Name = "bugToolStripMenuItem";
+            this.bugToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.bugToolStripMenuItem.Text = "Bug";
+            // 
+            // notificationToolStripMenuItem
+            // 
+            this.notificationToolStripMenuItem.Name = "notificationToolStripMenuItem";
+            this.notificationToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.notificationToolStripMenuItem.Text = "Notification";
             // 
             // contextMenuStrip1
             // 
@@ -99,7 +130,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel1.Controls.Add(this.lblusername);
             this.panel1.Controls.Add(this.btnsearchbug);
             this.panel1.Controls.Add(this.txtsearchbug);
             this.panel1.Controls.Add(this.logout);
@@ -107,17 +137,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1219, 33);
             this.panel1.TabIndex = 2;
-            // 
-            // lblusername
-            // 
-            this.lblusername.AutoSize = true;
-            this.lblusername.BackColor = System.Drawing.Color.White;
-            this.lblusername.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblusername.Location = new System.Drawing.Point(1010, 10);
-            this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(95, 13);
-            this.lblusername.TabIndex = 7;
-            this.lblusername.Text = "lblusername";
             // 
             // btnsearchbug
             // 
@@ -135,13 +154,20 @@
             this.txtsearchbug.Size = new System.Drawing.Size(161, 20);
             this.txtsearchbug.TabIndex = 4;
             // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.SystemColors.Control;
+            this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
+            this.logout.Location = new System.Drawing.Point(1116, 3);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(100, 23);
+            this.logout.TabIndex = 3;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // panelDashboard
             // 
             this.panelDashboard.BackColor = System.Drawing.Color.White;
-            this.panelDashboard.Controls.Add(this.label18);
-            this.panelDashboard.Controls.Add(this.richremarks);
-            this.panelDashboard.Controls.Add(this.lblversion);
-            this.panelDashboard.Controls.Add(this.label17);
             this.panelDashboard.Controls.Add(this.label16);
             this.panelDashboard.Controls.Add(this.label15);
             this.panelDashboard.Controls.Add(this.label14);
@@ -180,160 +206,9 @@
             this.panelDashboard.TabIndex = 1;
             this.panelDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDashboard_Paint);
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(311, 703);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(85, 16);
-            this.label18.TabIndex = 37;
-            this.label18.Text = "Remarks";
-            // 
-            // richremarks
-            // 
-            this.richremarks.Location = new System.Drawing.Point(457, 684);
-            this.richremarks.Name = "richremarks";
-            this.richremarks.Size = new System.Drawing.Size(409, 133);
-            this.richremarks.TabIndex = 36;
-            this.richremarks.Text = "";
-            // 
-            // lblversion
-            // 
-            this.lblversion.AutoSize = true;
-            this.lblversion.Location = new System.Drawing.Point(1120, 154);
-            this.lblversion.Name = "lblversion";
-            this.lblversion.Size = new System.Drawing.Size(53, 13);
-            this.lblversion.TabIndex = 35;
-            this.lblversion.TabStop = true;
-            this.lblversion.Text = "Unknown";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1004, 154);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(101, 13);
-            this.label17.TabIndex = 34;
-            this.label17.Text = "Last Known Version";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(657, 346);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(30, 16);
-            this.label16.TabIndex = 33;
-            this.label16.Text = "To";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(452, 347);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(85, 16);
-            this.label15.TabIndex = 32;
-            this.label15.Text = "Line No";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(311, 647);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(129, 16);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Method Name";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(311, 610);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(118, 16);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "Class Name";
-            // 
-            // txtcomponent
-            // 
-            this.txtcomponent.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtcomponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcomponent.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.txtcomponent.Location = new System.Drawing.Point(556, 50);
-            this.txtcomponent.Name = "txtcomponent";
-            this.txtcomponent.ReadOnly = true;
-            this.txtcomponent.Size = new System.Drawing.Size(230, 26);
-            this.txtcomponent.TabIndex = 29;
-            this.txtcomponent.Text = "Component";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(311, 50);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(239, 16);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Component/Application";
-            // 
-            // txtclassname
-            // 
-            this.txtclassname.Location = new System.Drawing.Point(457, 609);
-            this.txtclassname.Name = "txtclassname";
-            this.txtclassname.ReadOnly = true;
-            this.txtclassname.Size = new System.Drawing.Size(230, 20);
-            this.txtclassname.TabIndex = 27;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(311, 14);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 16);
-            this.label11.TabIndex = 26;
-            this.label11.Text = "Project";
-            // 
-            // txtmethodname
-            // 
-            this.txtmethodname.Location = new System.Drawing.Point(457, 646);
-            this.txtmethodname.Name = "txtmethodname";
-            this.txtmethodname.ReadOnly = true;
-            this.txtmethodname.Size = new System.Drawing.Size(230, 20);
-            this.txtmethodname.TabIndex = 25;
-            // 
-            // txtproject
-            // 
-            this.txtproject.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtproject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtproject.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.txtproject.Location = new System.Drawing.Point(556, 10);
-            this.txtproject.Name = "txtproject";
-            this.txtproject.ReadOnly = true;
-            this.txtproject.Size = new System.Drawing.Size(230, 26);
-            this.txtproject.TabIndex = 24;
-            this.txtproject.Text = "Project";
-            // 
-            // txtlinefrom
-            // 
-            this.txtlinefrom.Location = new System.Drawing.Point(538, 346);
-            this.txtlinefrom.Name = "txtlinefrom";
-            this.txtlinefrom.Size = new System.Drawing.Size(100, 20);
-            this.txtlinefrom.TabIndex = 23;
-            // 
-            // txtlineto
-            // 
-            this.txtlineto.Location = new System.Drawing.Point(713, 346);
-            this.txtlineto.Name = "txtlineto";
-            this.txtlineto.Size = new System.Drawing.Size(100, 20);
-            this.txtlineto.TabIndex = 21;
-            // 
             // btnassignbug
             // 
-            this.btnassignbug.Location = new System.Drawing.Point(1012, 402);
+            this.btnassignbug.Location = new System.Drawing.Point(1008, 354);
             this.btnassignbug.Name = "btnassignbug";
             this.btnassignbug.Size = new System.Drawing.Size(82, 31);
             this.btnassignbug.TabIndex = 20;
@@ -345,7 +220,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label10.Location = new System.Drawing.Point(899, 366);
+            this.label10.Location = new System.Drawing.Point(895, 318);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(107, 13);
             this.label10.TabIndex = 19;
@@ -353,7 +228,7 @@
             // 
             // txtdeveloperusername
             // 
-            this.txtdeveloperusername.Location = new System.Drawing.Point(1012, 363);
+            this.txtdeveloperusername.Location = new System.Drawing.Point(1008, 315);
             this.txtdeveloperusername.Name = "txtdeveloperusername";
             this.txtdeveloperusername.Size = new System.Drawing.Size(165, 20);
             this.txtdeveloperusername.TabIndex = 18;
@@ -363,7 +238,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label9.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1009, 323);
+            this.label9.Location = new System.Drawing.Point(1005, 275);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 16);
             this.label9.TabIndex = 17;
@@ -382,7 +257,7 @@
             // lblbugstatus
             // 
             this.lblbugstatus.AutoSize = true;
-            this.lblbugstatus.Location = new System.Drawing.Point(1120, 190);
+            this.lblbugstatus.Location = new System.Drawing.Point(1120, 157);
             this.lblbugstatus.Name = "lblbugstatus";
             this.lblbugstatus.Size = new System.Drawing.Size(53, 13);
             this.lblbugstatus.TabIndex = 15;
@@ -392,11 +267,20 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1004, 190);
+            this.label7.Location = new System.Drawing.Point(1004, 157);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Current Bug Status";
+            // 
+            // imgbugseverity
+            // 
+            this.imgbugseverity.Location = new System.Drawing.Point(1007, 187);
+            this.imgbugseverity.Name = "imgbugseverity";
+            this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
+            this.imgbugseverity.TabIndex = 13;
+            this.imgbugseverity.TabStop = false;
+            this.imgbugseverity.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // richsourcecode
             // 
@@ -426,7 +310,6 @@
             this.lbllastupdatedby.TabIndex = 10;
             this.lbllastupdatedby.TabStop = true;
             this.lbllastupdatedby.Text = "Unknown";
-            this.lbllastupdatedby.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbllastupdatedby_LinkClicked);
             // 
             // label4
             // 
@@ -446,7 +329,6 @@
             this.lbllastupdateon.TabIndex = 8;
             this.lbllastupdateon.TabStop = true;
             this.lbllastupdateon.Text = "Unknown";
-            this.lbllastupdateon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbllastupdateon_LinkClicked);
             // 
             // label5
             // 
@@ -496,6 +378,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Reported bugs";
             // 
+            // imgscreenshot
+            // 
+            this.imgscreenshot.Location = new System.Drawing.Point(309, 109);
+            this.imgscreenshot.Name = "imgscreenshot";
+            this.imgscreenshot.Size = new System.Drawing.Size(329, 226);
+            this.imgscreenshot.TabIndex = 1;
+            this.imgscreenshot.TabStop = false;
+            this.imgscreenshot.Click += new System.EventHandler(this.imgscreenshot_Click);
+            // 
             // datagridviewpmdashboard
             // 
             this.datagridviewpmdashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -506,34 +397,119 @@
             this.datagridviewpmdashboard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridviewpmdashboard_CellClick);
             this.datagridviewpmdashboard.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.datagridviewpmdashboard_RowHeaderMouseClick);
             // 
-            // logout
+            // txtlineto
             // 
-            this.logout.BackColor = System.Drawing.SystemColors.Control;
-            this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
-            this.logout.Location = new System.Drawing.Point(1116, 3);
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(100, 23);
-            this.logout.TabIndex = 3;
-            this.logout.TabStop = false;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
+            this.txtlineto.Location = new System.Drawing.Point(713, 346);
+            this.txtlineto.Name = "txtlineto";
+            this.txtlineto.Size = new System.Drawing.Size(100, 20);
+            this.txtlineto.TabIndex = 21;
             // 
-            // imgbugseverity
+            // txtlinefrom
             // 
-            this.imgbugseverity.Location = new System.Drawing.Point(1007, 236);
-            this.imgbugseverity.Name = "imgbugseverity";
-            this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
-            this.imgbugseverity.TabIndex = 13;
-            this.imgbugseverity.TabStop = false;
-            this.imgbugseverity.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.txtlinefrom.Location = new System.Drawing.Point(538, 346);
+            this.txtlinefrom.Name = "txtlinefrom";
+            this.txtlinefrom.Size = new System.Drawing.Size(100, 20);
+            this.txtlinefrom.TabIndex = 23;
             // 
-            // imgscreenshot
+            // txtproject
             // 
-            this.imgscreenshot.Location = new System.Drawing.Point(309, 109);
-            this.imgscreenshot.Name = "imgscreenshot";
-            this.imgscreenshot.Size = new System.Drawing.Size(329, 226);
-            this.imgscreenshot.TabIndex = 1;
-            this.imgscreenshot.TabStop = false;
-            this.imgscreenshot.Click += new System.EventHandler(this.imgscreenshot_Click);
+            this.txtproject.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtproject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtproject.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.txtproject.Location = new System.Drawing.Point(556, 10);
+            this.txtproject.Name = "txtproject";
+            this.txtproject.ReadOnly = true;
+            this.txtproject.Size = new System.Drawing.Size(230, 26);
+            this.txtproject.TabIndex = 24;
+            this.txtproject.Text = "Project";
+            // 
+            // txtmethodname
+            // 
+            this.txtmethodname.Location = new System.Drawing.Point(457, 646);
+            this.txtmethodname.Name = "txtmethodname";
+            this.txtmethodname.ReadOnly = true;
+            this.txtmethodname.Size = new System.Drawing.Size(230, 20);
+            this.txtmethodname.TabIndex = 25;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(311, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 16);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Project";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(311, 50);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(239, 16);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Component/Application";
+            // 
+            // txtclassname
+            // 
+            this.txtclassname.Location = new System.Drawing.Point(457, 609);
+            this.txtclassname.Name = "txtclassname";
+            this.txtclassname.ReadOnly = true;
+            this.txtclassname.Size = new System.Drawing.Size(230, 20);
+            this.txtclassname.TabIndex = 27;
+            // 
+            // txtcomponent
+            // 
+            this.txtcomponent.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtcomponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcomponent.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.txtcomponent.Location = new System.Drawing.Point(556, 50);
+            this.txtcomponent.Name = "txtcomponent";
+            this.txtcomponent.ReadOnly = true;
+            this.txtcomponent.Size = new System.Drawing.Size(230, 26);
+            this.txtcomponent.TabIndex = 29;
+            this.txtcomponent.Text = "Component";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(311, 610);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(118, 16);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Class Name";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(311, 647);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(129, 16);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Method Name";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(452, 347);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(85, 16);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Line No";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(657, 346);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(30, 16);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "To";
             // 
             // ProjectManagerDashboard
             // 
@@ -541,27 +517,37 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1225, 895);
             this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "ProjectManagerDashboard";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.panelMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.ToolStripMenuItem bugToolStripMenuItem;
         private System.Windows.Forms.PictureBox logout;
         private System.Windows.Forms.Panel panelDashboard;
+        private System.Windows.Forms.ToolStripMenuItem notificationToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView datagridviewpmdashboard;
         private System.Windows.Forms.PictureBox imgscreenshot;
@@ -597,10 +583,5 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.LinkLabel lblversion;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.RichTextBox richremarks;
-        private System.Windows.Forms.Label lblusername;
     }
 }

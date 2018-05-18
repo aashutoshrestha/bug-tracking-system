@@ -67,11 +67,17 @@
     <Compile Include="DeveloperDashboard.Designer.cs">
       <DependentUpon>DeveloperDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="imgform.cs">
+    <Compile Include="HistoryAudit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="imgform.Designer.cs">
-      <DependentUpon>imgform.cs</DependentUpon>
+    <Compile Include="HistoryAudit.Designer.cs">
+      <DependentUpon>HistoryAudit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageForm.Designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectManagerDashboard.cs">
       <SubType>Form</SubType>
@@ -119,8 +125,11 @@
     <EmbeddedResource Include="DeveloperDashboard.resx">
       <DependentUpon>DeveloperDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="imgform.resx">
-      <DependentUpon>imgform.cs</DependentUpon>
+    <EmbeddedResource Include="HistoryAudit.resx">
+      <DependentUpon>HistoryAudit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectManagerDashboard.resx">
       <DependentUpon>ProjectManagerDashboard.cs</DependentUpon>
@@ -192,6 +201,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Red-Cross-PNG-File.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_update-bug.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,7 +13,7 @@ namespace BugTrackingSystem
 {
     public partial class ProjectManagerDashboard : Form
     {
-        public DataTable dtable,historytable;
+        public DataTable dtable;
         private int bugid;
         private Image imgnew;
         private String sessionusername;
@@ -51,7 +50,7 @@ namespace BugTrackingSystem
             imgscreenshot.SizeMode = PictureBoxSizeMode.StretchImage;
             imgbugseverity.SizeMode = PictureBoxSizeMode.StretchImage;
             PopulateDataGridPMDashboard();
-            this.lblusername.Text = sessionusername;
+
 
         }
 
@@ -85,7 +84,7 @@ namespace BugTrackingSystem
         /// </summary>
         public void PopulateDataGridPMDashboard()
         {
-        
+            PopulateDashboardItems();
             datagridviewpmdashboard.DataSource = dtable;
            
             foreach (DataGridViewRow row in datagridviewpmdashboard.Rows)
@@ -137,20 +136,6 @@ namespace BugTrackingSystem
             bug.setBugID(bugid);
             BugController bc = new BugController();
             bc.populatepmdashboard(bug);
-            historytable = bc.getHistory(bug);
-
-            if (historytable != null && historytable.Rows.Count > 0) {
-                this.lbllastupdatedby.Text = historytable.Rows[0][4].ToString();
-                this.lbllastupdateon.Text = historytable.Rows[0][3].ToString();
-                this.richremarks.Text = historytable.Rows[0][7].ToString();
-
-            }
-            else
-            {
-                this.lbllastupdatedby.Text = "Unkown";
-                this.lbllastupdateon.Text = "Unknown";
-                this.richremarks.Text = "";
-            }
             this.richsourcecode.Text = bug.getCode();
             this.richbugdesc.Text = bug.getbugdesc();
             this.imgscreenshot.Image = bug.GetImage();
@@ -161,7 +146,6 @@ namespace BugTrackingSystem
             this.txtlinefrom.Text = bug.getlinenofrom().ToString();
             this.txtlineto.Text = bug.getlinenoto().ToString();
             this.lblbugstatus.Text = bug.getStatus();
-            this.lblversion.Text = bug.getVersion();
             imgnew = bug.GetImage();
 
 
@@ -194,19 +178,11 @@ namespace BugTrackingSystem
         //on table item clicked
         private void datagridviewpmdashboard_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                int index = e.RowIndex;
-                DataGridViewRow selectedrow = datagridviewpmdashboard.Rows[index];
-                bugid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
+            int index = e.RowIndex;
+            DataGridViewRow selectedrow = datagridviewpmdashboard.Rows[index];
+            bugid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
 
-                PopulateDashboardItems();
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-
+            PopulateDashboardItems();
         }
 
         //showing image in a new form
@@ -215,39 +191,6 @@ namespace BugTrackingSystem
             ImageForm img = new ImageForm();
             img.loadImage(imgnew);
             img.Show();
-        }
-
-        private void lbllastupdateon_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (lbllastupdateon.Text == "Unknown")
-            {
-                MessageBox.Show("No History found");
-            }
-            else
-            {
-                HistoryAudit historyAudit = new HistoryAudit();
-                historyAudit.updatedate = lbllastupdateon.Text;
-                historyAudit.Show();
-            }
-        }
-
-        public void getAuditHistory()
-        {
-            if (lbllastupdateon.Text == "Unknown")
-            {
-                MessageBox.Show("No History found");
-            }
-            else
-            {
-                HistoryAudit historyAudit = new HistoryAudit();
-                historyAudit.updatedate = lbllastupdateon.Text;
-                historyAudit.Show();
-            }
-        }
-
-        private void lbllastupdatedby_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            getAuditHistory();
         }
 
         private void btnassignbug_Click(object sender, EventArgs e)
@@ -269,6 +212,5 @@ namespace BugTrackingSystem
 
 
         }
-       
     }
 }

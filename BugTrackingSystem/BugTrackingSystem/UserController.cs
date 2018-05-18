@@ -64,17 +64,18 @@ namespace BugTrackingSystem
                     }
                     else if (login.GetString(role)=="developer")
                     {
-                        DeveloperDashboard ddashboard = new DeveloperDashboard();
+
                         flag = true;
-                        ddashboard.Show();
-                       
+                        
+                        populateDeveloperDashboard(username);
+
+
                     }
                     else if (login.GetString(role) == "tester")
                     {
-                        TesterDashboard tdashboard = new TesterDashboard();
+                        
                         flag = true;
-                        tdashboard.sessionusername = username;
-                        tdashboard.Show();
+                        populatetesterdashboard(username);
 
                     }
 
@@ -132,6 +133,85 @@ namespace BugTrackingSystem
                 Debug.WriteLine(e.StackTrace);
             }
         }
+
+        //populate project Developer dashboard
+        public void populateDeveloperDashboard(String username)
+        {
+            try
+            {
+                String sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug where assignedto=@username";
+
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                cmd.Parameters.AddWithValue("@username", username);
+                MyAdapter.SelectCommand = cmd;
+
+                DataTable dTable = new DataTable();
+                MyAdapter.Fill(dTable);
+
+                DeveloperDashboard ddashboard = new DeveloperDashboard();
+                ddashboard.dtable = dTable;
+
+                ddashboard.Show();
+                ddashboard.sessionusername = username;
+                Debug.WriteLine("Logged in");
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+        }
+
+        //populate tester dashboard
+        public void populatetesterdashboard(String username)
+        {
+            try
+            {
+                String sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug where submittedby=@username";
+
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                cmd.Parameters.AddWithValue("@username", username);
+                MyAdapter.SelectCommand = cmd;
+
+                DataTable dTable = new DataTable();
+                MyAdapter.Fill(dTable);
+
+                TesterDashboard tdash = new TesterDashboard();
+                tdash.dataTable = dTable;
+
+                tdash.Show();
+                tdash.sessionusername = username;
+                Debug.WriteLine("Logged in");
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+        }
+
     }
 
 }

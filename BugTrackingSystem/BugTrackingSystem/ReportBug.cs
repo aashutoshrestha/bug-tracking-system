@@ -131,6 +131,7 @@ namespace BugTrackingSystem
             {
                 this.Hide();
                 MessageBox.Show("Bug has been reported succesfully");
+                
             }
             else
             {

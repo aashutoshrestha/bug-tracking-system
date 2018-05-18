@@ -266,11 +266,20 @@ namespace BugTrackingSystem
             }
         }
 
-
+        /// <summary>
+        /// Populate project manager dashboard
+        /// </summary>
+        /// <param name="bug"></param>
         public void populatepmdashboard(BugModel bug)
         {
             try { 
-            String sql = "select * from tbl_bug where bug_id=@bug_id";
+            String sql = "select pro.project_name,com.component_name," +
+                    "bug.summary,bug.version,bug.severity,bug.os,bug.class,bug.method,bug.linenofrom,bug.linenoto,bug.vcrurl," +
+                    "bug.screenshot,bug.bugdesc,bug.code,bug.submittedby,bug.submitteddate,bug.status,bug.assignedto" +
+                    " from tbl_project as pro" +
+                    " inner join tbl_component as com on pro.project_id = com.project_id " +
+                    "inner join tbl_bug as bug on com.component_id = bug.component_id " +
+                    "where bug_id = @bug_id";
 
             MySqlConnection conn = DBUtils.GetDBConnection();
 
@@ -288,6 +297,14 @@ namespace BugTrackingSystem
                 DataTable dTable = new DataTable();
                 MyAdapter.Fill(dTable);
 
+                bug.setProjectName(dTable.Rows[0][0].ToString());
+                bug.setComponentName(dTable.Rows[0][1].ToString());
+                bug.setVersion(dTable.Rows[0][3].ToString());
+                bug.setSeverity(dTable.Rows[0][4].ToString());
+                bug.setClass(dTable.Rows[0][6].ToString());
+                bug.setMethod(dTable.Rows[0][7].ToString());
+                bug.setlinenofrom(Convert.ToInt32(dTable.Rows[0][8].ToString()));
+                bug.setlinenoto(Convert.ToInt32(dTable.Rows[0][9].ToString()));
                 bug.setbugdesc(dTable.Rows[0][12].ToString());
                 bug.setCode(dTable.Rows[0][13].ToString());
 
@@ -300,8 +317,9 @@ namespace BugTrackingSystem
                 MemoryStream ms = new MemoryStream(img);
                 bug.setImage(System.Drawing.Image.FromStream(ms));
 
+
                 bug.setStatus(dTable.Rows[0][16].ToString());
-                
+                bug.setAssignedTo(dTable.Rows[0][17].ToString());
 
 
 
@@ -314,7 +332,487 @@ namespace BugTrackingSystem
 
 
 
+
+
 }
+        
+        public void populatedeveloperdashboard(BugModel bug)
+        {
+            
+            
+            try
+            {
+                String sql = "select pro.project_name,com.component_name," +
+                        "bug.summary,bug.version,bug.severity,bug.os,bug.class,bug.method,bug.linenofrom,bug.linenoto,bug.vcrurl," +
+                        "bug.screenshot,bug.bugdesc,bug.code,bug.submittedby,bug.submitteddate,bug.status,bug.assignedto" +
+                        " from tbl_project as pro" +
+                        " inner join tbl_component as com on pro.project_id = com.project_id " +
+                        "inner join tbl_bug as bug on com.component_id = bug.component_id " +
+                        "where bug_id = @bug_id";
+
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@bug_id", bug.getBUGID());
+                
+
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                MyAdapter.SelectCommand = cmd;
+                DataTable dTable = new DataTable();
+                MyAdapter.Fill(dTable);
+
+                bug.dtable = dTable;
+                bug.setProjectName(dTable.Rows[0][0].ToString());
+                bug.setComponentName(dTable.Rows[0][1].ToString());
+                bug.setVersion(dTable.Rows[0][3].ToString());
+                bug.setSeverity(dTable.Rows[0][4].ToString());
+               
+                bug.setClass(dTable.Rows[0][6].ToString());
+                bug.setMethod(dTable.Rows[0][7].ToString());
+                bug.setlinenofrom(Convert.ToInt32(dTable.Rows[0][8].ToString()));
+                bug.setlinenoto(Convert.ToInt32(dTable.Rows[0][9].ToString()));
+                bug.setbugdesc(dTable.Rows[0][12].ToString());
+                bug.setCode(dTable.Rows[0][13].ToString());
+
+               
+                
+
+
+                byte[] img = (byte[])dTable.Rows[0][11];
+                MemoryStream ms = new MemoryStream(img);
+                bug.setImage(System.Drawing.Image.FromStream(ms));
+
+
+                bug.setStatus(dTable.Rows[0][16].ToString());
+                bug.setAssignedTo(dTable.Rows[0][17].ToString());
+
+               
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+            
+            
+        }
+
+
+
+        /// <summary>
+        /// Tester Dashboard Load
+        /// </summary>
+        /// <param name="bug"></param>
+        public void populatetesterdashboard(BugModel bug)
+        {
+
+
+            try
+            {
+                String sql = "select pro.project_name,com.component_name," +
+                        "bug.summary,bug.version,bug.severity,bug.os,bug.class,bug.method,bug.linenofrom,bug.linenoto,bug.vcrurl," +
+                        "bug.screenshot,bug.bugdesc,bug.code,bug.submittedby,bug.submitteddate,bug.status,bug.assignedto" +
+                        " from tbl_project as pro" +
+                        " inner join tbl_component as com on pro.project_id = com.project_id " +
+                        "inner join tbl_bug as bug on com.component_id = bug.component_id " +
+                        "where bug_id = @bug_id";
+
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@bug_id", bug.getBUGID());
+
+
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                MyAdapter.SelectCommand = cmd;
+                DataTable dTable = new DataTable();
+                MyAdapter.Fill(dTable);
+
+                bug.dtable = dTable;
+                bug.setProjectName(dTable.Rows[0][0].ToString());
+                bug.setComponentName(dTable.Rows[0][1].ToString());
+                bug.setVersion(dTable.Rows[0][3].ToString());
+                bug.setSeverity(dTable.Rows[0][4].ToString());
+
+                bug.setClass(dTable.Rows[0][6].ToString());
+                bug.setMethod(dTable.Rows[0][7].ToString());
+                bug.setlinenofrom(Convert.ToInt32(dTable.Rows[0][8].ToString()));
+                bug.setlinenoto(Convert.ToInt32(dTable.Rows[0][9].ToString()));
+                bug.setbugdesc(dTable.Rows[0][12].ToString());
+                bug.setCode(dTable.Rows[0][13].ToString());
+
+
+
+
+
+                byte[] img = (byte[])dTable.Rows[0][11];
+                MemoryStream ms = new MemoryStream(img);
+                bug.setImage(System.Drawing.Image.FromStream(ms));
+
+
+                bug.setStatus(dTable.Rows[0][16].ToString());
+                bug.setAssignedTo(dTable.Rows[0][17].ToString());
+
+
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+
+
+        }
+
+
+
+        /// <summary>
+        /// //assign bug
+        /// </summary>
+        /// <param name="bug"></param>
+        /// <returns> flag </returns>
+        public bool AssignBug(BugModel bug)
+        {
+            bool flag = false;
+            if (CheckUsername(bug.getAssignedTo())==false)
+            {
+                flag = false;
+            }
+            else
+            {
+                try { 
+                String sql = "update tbl_bug set assignedto = @username, status='assigned' where bug_id = @bug_id";
+
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+
+                // Add and set value for parameter.
+                cmd.Parameters.AddWithValue("@username", bug.getAssignedTo());
+                cmd.Parameters.AddWithValue("@bug_id", bug.getBUGID());
+
+                    int rowCount = cmd.ExecuteNonQuery();
+                    if (rowCount>0)
+                    {
+                        flag = true;
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+
+                }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+
+
+
+        }
+
+
+
+            return flag;
+        }
+       
+        //check username if assign
+        public bool CheckUsername(String username)
+        {
+            bool flag = false;
+            try {
+                String sql = "select * from tbl_user where username=@developerusername";
+
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+
+                // Add and set value for parameter.
+                cmd.Parameters.AddWithValue("@developerusername", username);
+                MySqlDataReader component = cmd.ExecuteReader();
+                if (component.Read())
+                {
+                    int forrole = component.GetOrdinal("role");
+                   String role = component.GetString(forrole);
+                    if (role == "developer")
+                    {
+                        flag = true;
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+
+            return flag;
+
+        }
+
+
+        /// <summary>
+        /// Update Bug Information
+        /// </summary>
+        /// <param name="bug"></param>
+        /// <returns></returns>
+
+        public bool UpdateBug(BugModel bug)
+        {
+            bool flag = false;
+            try
+            {
+                String sql = "update tbl_bug set code=@code, status=@status where bug_id = @bug_id";
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+
+                // Add and set value for parameter.
+                Debug.WriteLine("UpdateBUg Called");
+
+                cmd.Parameters.AddWithValue("@code", bug.getCode());
+                cmd.Parameters.AddWithValue("@status", bug.getStatus());
+                cmd.Parameters.AddWithValue("@bug_id", bug.getBUGID());
+                Debug.WriteLine(bug.getCode() + bug.getStatus()+ bug.getBUGID());
+                int rowCount = cmd.ExecuteNonQuery();
+                if (rowCount > 0)
+                {
+                    Debug.WriteLine("Updated");
+
+                    flag = setHistory(bug);
+
+                }
+                else
+                {
+                    flag = false;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+            return flag;
+        }
+
+
+
+        /// <summary>
+        /// Get History for Audit
+        /// </summary>
+        /// <param name="bug"></param>
+        public bool setHistory(BugModel bug)
+        {
+
+            bool flag = false;
+            try {
+                String sql = "INSERT INTO `tbl_history`( `bug_id`,`version`, `updatedate`, `updatedby`, `code`, `status`, `remarks`) " +
+                    "VALUES (@bug_id,@version,@updatedate,@updatedby,@code,@status,@remarks)";
+               
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Parameters.AddWithValue("@bug_id", bug.getBUGID());
+                cmd.Parameters.AddWithValue("@version", bug.getVersion());
+                cmd.Parameters.AddWithValue("@updatedate", DateTime.Now.ToString("yyyy-MM-dd H:mm:ss"));
+                cmd.Parameters.AddWithValue("@updatedby", bug.getUsername());
+                cmd.Parameters.AddWithValue("@code", bug.getCode());
+                cmd.Parameters.AddWithValue("@status", bug.getStatus());
+                cmd.Parameters.AddWithValue("@remarks", bug.getRemarks());
+                Debug.WriteLine("setHistory Called");
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+                int rowCount = cmd.ExecuteNonQuery();
+
+                if (rowCount > 0)
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+            return flag;
+        }
+
+
+        /// <summary>
+        /// Get History
+        /// </summary>
+        /// <param name="bug"></param>
+        /// <returns></returns>
+        public DataTable getHistory(BugModel bug)
+        {
+            DataTable historytable = new DataTable();
+            try
+            {
+                String sql = "SELECT * FROM tbl_history where bug_id=@bug_id ORDER BY updatedate LIMIT 1";
+               
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = sql;
+                Debug.WriteLine("History Called"+ bug.getBUGID());
+                // Add and set value for parameter.
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                cmd.Parameters.AddWithValue("@bug_id", bug.getBUGID());
+                MyAdapter.SelectCommand = cmd;
+
+                
+                MyAdapter.Fill(historytable);
+
+            
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+            return historytable;
+        }
+
+
+        /// <summary>
+        /// Audit History Creator
+        /// </summary>
+        /// <returns></returns>
+
+            public static DataTable getHistory(int bugid)
+        {
+
+            using (DataTable historytable = new DataTable())
+            {
+                try
+                {
+                    String sql = "SELECT * FROM tbl_history where bug_id=@bug_id";
+
+                    MySqlConnection conn = DBUtils.GetDBConnection();
+
+                    conn.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = sql;
+
+                    
+                    MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                    cmd.Parameters.AddWithValue("@bug_id", bugid);
+
+                    Debug.WriteLine(bugid);
+                    MyAdapter.SelectCommand = cmd;
+
+
+                    MyAdapter.Fill(historytable);
+
+
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Error Message: " + e);
+                    Debug.WriteLine(e.StackTrace);
+                }
+                return historytable;
+            }
+        }
+
+
+        public static DataTable getAuditHistory(String updatedate)
+        {
+            using (DataTable historytable = new DataTable())
+            {
+                try
+                {
+                    String sql = "SELECT * FROM tbl_history where updatedate=@updatedate";
+
+                    MySqlConnection conn = DBUtils.GetDBConnection();
+
+                    conn.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = sql;
+
+                    DateTime enteredDate = DateTime.Parse(updatedate);
+                    MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                    cmd.Parameters.AddWithValue("@updatedate", enteredDate);
+
+                    Debug.WriteLine(updatedate);
+                    MyAdapter.SelectCommand = cmd;
+
+
+                    MyAdapter.Fill(historytable);
+
+
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Error Message: " + e);
+                    Debug.WriteLine(e.StackTrace);
+                }
+                return historytable;
+            }
+        }
+
 
        
     }
