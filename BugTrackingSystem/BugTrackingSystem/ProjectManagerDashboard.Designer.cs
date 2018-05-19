@@ -35,7 +35,10 @@
             this.lblusername = new System.Windows.Forms.Label();
             this.btnsearchbug = new System.Windows.Forms.Button();
             this.txtsearchbug = new System.Windows.Forms.TextBox();
+            this.logout = new System.Windows.Forms.PictureBox();
             this.panelDashboard = new System.Windows.Forms.Panel();
+            this.btnopenide = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label18 = new System.Windows.Forms.Label();
             this.richremarks = new System.Windows.Forms.RichTextBox();
             this.lblversion = new System.Windows.Forms.LinkLabel();
@@ -59,6 +62,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblbugstatus = new System.Windows.Forms.LinkLabel();
             this.label7 = new System.Windows.Forms.Label();
+            this.imgbugseverity = new System.Windows.Forms.PictureBox();
             this.richsourcecode = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lbllastupdatedby = new System.Windows.Forms.LinkLabel();
@@ -69,17 +73,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.richbugdesc = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.datagridviewpmdashboard = new System.Windows.Forms.DataGridView();
-            this.logout = new System.Windows.Forms.PictureBox();
-            this.imgbugseverity = new System.Windows.Forms.PictureBox();
             this.imgscreenshot = new System.Windows.Forms.PictureBox();
+            this.datagridviewpmdashboard = new System.Windows.Forms.DataGridView();
             this.panelMain.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
+            this.panelDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -127,6 +129,7 @@
             this.btnsearchbug.TabIndex = 5;
             this.btnsearchbug.Text = "Search Bug";
             this.btnsearchbug.UseVisualStyleBackColor = true;
+            this.btnsearchbug.Click += new System.EventHandler(this.btnsearchbug_Click);
             // 
             // txtsearchbug
             // 
@@ -135,9 +138,22 @@
             this.txtsearchbug.Size = new System.Drawing.Size(161, 20);
             this.txtsearchbug.TabIndex = 4;
             // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.SystemColors.Control;
+            this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
+            this.logout.Location = new System.Drawing.Point(1116, 3);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(100, 23);
+            this.logout.TabIndex = 3;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // panelDashboard
             // 
             this.panelDashboard.BackColor = System.Drawing.Color.White;
+            this.panelDashboard.Controls.Add(this.btnopenide);
+            this.panelDashboard.Controls.Add(this.linkLabel1);
             this.panelDashboard.Controls.Add(this.label18);
             this.panelDashboard.Controls.Add(this.richremarks);
             this.panelDashboard.Controls.Add(this.lblversion);
@@ -179,6 +195,29 @@
             this.panelDashboard.Size = new System.Drawing.Size(1222, 827);
             this.panelDashboard.TabIndex = 1;
             this.panelDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDashboard_Paint);
+            // 
+            // btnopenide
+            // 
+            this.btnopenide.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnopenide.Location = new System.Drawing.Point(872, 546);
+            this.btnopenide.Name = "btnopenide";
+            this.btnopenide.Size = new System.Drawing.Size(191, 42);
+            this.btnopenide.TabIndex = 40;
+            this.btnopenide.Text = "Open in Text Editor";
+            this.btnopenide.UseVisualStyleBackColor = true;
+            this.btnopenide.Click += new System.EventHandler(this.btnopenide_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(792, 56);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(128, 20);
+            this.linkLabel1.TabIndex = 39;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open Repository";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label18
             // 
@@ -398,6 +437,15 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Current Bug Status";
             // 
+            // imgbugseverity
+            // 
+            this.imgbugseverity.Location = new System.Drawing.Point(1007, 236);
+            this.imgbugseverity.Name = "imgbugseverity";
+            this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
+            this.imgbugseverity.TabIndex = 13;
+            this.imgbugseverity.TabStop = false;
+            this.imgbugseverity.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // richsourcecode
             // 
             this.richsourcecode.Location = new System.Drawing.Point(309, 366);
@@ -496,6 +544,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Reported bugs";
             // 
+            // imgscreenshot
+            // 
+            this.imgscreenshot.Location = new System.Drawing.Point(309, 109);
+            this.imgscreenshot.Name = "imgscreenshot";
+            this.imgscreenshot.Size = new System.Drawing.Size(329, 226);
+            this.imgscreenshot.TabIndex = 1;
+            this.imgscreenshot.TabStop = false;
+            this.imgscreenshot.Click += new System.EventHandler(this.imgscreenshot_Click);
+            // 
             // datagridviewpmdashboard
             // 
             this.datagridviewpmdashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -505,35 +562,6 @@
             this.datagridviewpmdashboard.TabIndex = 0;
             this.datagridviewpmdashboard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridviewpmdashboard_CellClick);
             this.datagridviewpmdashboard.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.datagridviewpmdashboard_RowHeaderMouseClick);
-            // 
-            // logout
-            // 
-            this.logout.BackColor = System.Drawing.SystemColors.Control;
-            this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
-            this.logout.Location = new System.Drawing.Point(1116, 3);
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(100, 23);
-            this.logout.TabIndex = 3;
-            this.logout.TabStop = false;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
-            // 
-            // imgbugseverity
-            // 
-            this.imgbugseverity.Location = new System.Drawing.Point(1007, 236);
-            this.imgbugseverity.Name = "imgbugseverity";
-            this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
-            this.imgbugseverity.TabIndex = 13;
-            this.imgbugseverity.TabStop = false;
-            this.imgbugseverity.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // imgscreenshot
-            // 
-            this.imgscreenshot.Location = new System.Drawing.Point(309, 109);
-            this.imgscreenshot.Name = "imgscreenshot";
-            this.imgscreenshot.Size = new System.Drawing.Size(329, 226);
-            this.imgscreenshot.TabIndex = 1;
-            this.imgscreenshot.TabStop = false;
-            this.imgscreenshot.Click += new System.EventHandler(this.imgscreenshot_Click);
             // 
             // ProjectManagerDashboard
             // 
@@ -547,12 +575,12 @@
             this.panelMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewpmdashboard)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -602,5 +630,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.RichTextBox richremarks;
         private System.Windows.Forms.Label lblusername;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button btnopenide;
     }
 }

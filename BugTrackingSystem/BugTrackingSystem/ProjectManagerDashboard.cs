@@ -250,6 +250,33 @@ namespace BugTrackingSystem
             getAuditHistory();
         }
 
+        private void btnopenide_Click(object sender, EventArgs e)
+        {
+            SourceCodeEditor sourceCode = new SourceCodeEditor(this.richsourcecode.Text);
+            sourceCode.Show();
+        }
+
+        private void btnsearchbug_Click(object sender, EventArgs e)
+        {
+            DataTable searchhistory = new DataTable();
+            searchhistory = BugController.getSearch(this.txtsearchbug.Text);
+            dtable = searchhistory;
+            PopulateDataGridPMDashboard();
+            this.Refresh();
+
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(bug.getVCURL());
+        }
+
         private void btnassignbug_Click(object sender, EventArgs e)
         {
             BugModel bug = new BugModel();

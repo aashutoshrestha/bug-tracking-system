@@ -31,6 +31,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblversion = new System.Windows.Forms.LinkLabel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.pbupdate = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -46,6 +50,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblbugstatus = new System.Windows.Forms.LinkLabel();
             this.label7 = new System.Windows.Forms.Label();
+            this.imgbugseverity = new System.Windows.Forms.PictureBox();
             this.richsourcecode = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lbllastupdatedby = new System.Windows.Forms.LinkLabel();
@@ -56,23 +61,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.richbugdesc = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.imgscreenshot = new System.Windows.Forms.PictureBox();
             this.datagridviewdeveloperdashboard = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblusername = new System.Windows.Forms.Label();
-            this.lblversion = new System.Windows.Forms.LinkLabel();
-            this.label17 = new System.Windows.Forms.Label();
             this.logout = new System.Windows.Forms.PictureBox();
-            this.pbupdate = new System.Windows.Forms.PictureBox();
-            this.imgbugseverity = new System.Windows.Forms.PictureBox();
-            this.imgscreenshot = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridviewdeveloperdashboard)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbupdate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewdeveloperdashboard)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,6 +95,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.linkLabel1);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.lblversion);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.pbupdate);
@@ -129,6 +133,46 @@
             this.panel1.Size = new System.Drawing.Size(1191, 807);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(871, 539);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(229, 50);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "Open in Text Editor";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblversion
+            // 
+            this.lblversion.AutoSize = true;
+            this.lblversion.Location = new System.Drawing.Point(1120, 151);
+            this.lblversion.Name = "lblversion";
+            this.lblversion.Size = new System.Drawing.Size(53, 13);
+            this.lblversion.TabIndex = 68;
+            this.lblversion.TabStop = true;
+            this.lblversion.Text = "Unknown";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(1004, 151);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(101, 13);
+            this.label17.TabIndex = 67;
+            this.label17.Text = "Last Known Version";
+            // 
+            // pbupdate
+            // 
+            this.pbupdate.Image = global::BugTrackingSystem.Properties.Resources.button_update;
+            this.pbupdate.Location = new System.Drawing.Point(308, 703);
+            this.pbupdate.Name = "pbupdate";
+            this.pbupdate.Size = new System.Drawing.Size(131, 44);
+            this.pbupdate.TabIndex = 66;
+            this.pbupdate.TabStop = false;
+            this.pbupdate.Click += new System.EventHandler(this.pbupdate_Click);
             // 
             // label16
             // 
@@ -273,6 +317,14 @@
             this.label7.TabIndex = 47;
             this.label7.Text = "Current Bug Status";
             // 
+            // imgbugseverity
+            // 
+            this.imgbugseverity.Location = new System.Drawing.Point(1007, 241);
+            this.imgbugseverity.Name = "imgbugseverity";
+            this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
+            this.imgbugseverity.TabIndex = 46;
+            this.imgbugseverity.TabStop = false;
+            // 
             // richsourcecode
             // 
             this.richsourcecode.Location = new System.Drawing.Point(308, 367);
@@ -370,6 +422,15 @@
             this.label1.TabIndex = 36;
             this.label1.Text = "Assigned Bugs";
             // 
+            // imgscreenshot
+            // 
+            this.imgscreenshot.Location = new System.Drawing.Point(308, 110);
+            this.imgscreenshot.Name = "imgscreenshot";
+            this.imgscreenshot.Size = new System.Drawing.Size(329, 226);
+            this.imgscreenshot.TabIndex = 35;
+            this.imgscreenshot.TabStop = false;
+            this.imgscreenshot.Click += new System.EventHandler(this.imgscreenshot_Click);
+            // 
             // datagridviewdeveloperdashboard
             // 
             this.datagridviewdeveloperdashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -401,25 +462,6 @@
             this.lblusername.TabIndex = 7;
             this.lblusername.Text = "lblusername";
             // 
-            // lblversion
-            // 
-            this.lblversion.AutoSize = true;
-            this.lblversion.Location = new System.Drawing.Point(1120, 151);
-            this.lblversion.Name = "lblversion";
-            this.lblversion.Size = new System.Drawing.Size(53, 13);
-            this.lblversion.TabIndex = 68;
-            this.lblversion.TabStop = true;
-            this.lblversion.Text = "Unknown";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1004, 151);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(101, 13);
-            this.label17.TabIndex = 67;
-            this.label17.Text = "Last Known Version";
-            // 
             // logout
             // 
             this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
@@ -430,32 +472,17 @@
             this.logout.TabStop = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
-            // pbupdate
+            // linkLabel1
             // 
-            this.pbupdate.Image = global::BugTrackingSystem.Properties.Resources.button_update;
-            this.pbupdate.Location = new System.Drawing.Point(308, 703);
-            this.pbupdate.Name = "pbupdate";
-            this.pbupdate.Size = new System.Drawing.Size(131, 44);
-            this.pbupdate.TabIndex = 66;
-            this.pbupdate.TabStop = false;
-            this.pbupdate.Click += new System.EventHandler(this.pbupdate_Click);
-            // 
-            // imgbugseverity
-            // 
-            this.imgbugseverity.Location = new System.Drawing.Point(1007, 241);
-            this.imgbugseverity.Name = "imgbugseverity";
-            this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
-            this.imgbugseverity.TabIndex = 46;
-            this.imgbugseverity.TabStop = false;
-            // 
-            // imgscreenshot
-            // 
-            this.imgscreenshot.Location = new System.Drawing.Point(308, 110);
-            this.imgscreenshot.Name = "imgscreenshot";
-            this.imgscreenshot.Size = new System.Drawing.Size(329, 226);
-            this.imgscreenshot.TabIndex = 35;
-            this.imgscreenshot.TabStop = false;
-            this.imgscreenshot.Click += new System.EventHandler(this.imgscreenshot_Click);
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(791, 54);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(128, 20);
+            this.linkLabel1.TabIndex = 40;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open Repository";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // DeveloperDashboard
             // 
@@ -473,13 +500,13 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbupdate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridviewdeveloperdashboard)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbupdate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -524,5 +551,7 @@
         private System.Windows.Forms.Label lblusername;
         private System.Windows.Forms.LinkLabel lblversion;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

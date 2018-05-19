@@ -307,6 +307,7 @@ namespace BugTrackingSystem
                 bug.setlinenoto(Convert.ToInt32(dTable.Rows[0][9].ToString()));
                 bug.setbugdesc(dTable.Rows[0][12].ToString());
                 bug.setCode(dTable.Rows[0][13].ToString());
+                bug.setVCURL(dTable.Rows[0][10].ToString());
 
                 Debug.WriteLine("This is debug for pmdashboard");
                 Debug.WriteLine(bug.getBUGID());
@@ -379,9 +380,10 @@ namespace BugTrackingSystem
                 bug.setlinenoto(Convert.ToInt32(dTable.Rows[0][9].ToString()));
                 bug.setbugdesc(dTable.Rows[0][12].ToString());
                 bug.setCode(dTable.Rows[0][13].ToString());
+                bug.setVCURL(dTable.Rows[0][10].ToString());
 
-               
-                
+
+
 
 
                 byte[] img = (byte[])dTable.Rows[0][11];
@@ -453,6 +455,7 @@ namespace BugTrackingSystem
                 bug.setlinenoto(Convert.ToInt32(dTable.Rows[0][9].ToString()));
                 bug.setbugdesc(dTable.Rows[0][12].ToString());
                 bug.setCode(dTable.Rows[0][13].ToString());
+                bug.setVCURL(dTable.Rows[0][10].ToString());
 
 
 
@@ -514,7 +517,8 @@ namespace BugTrackingSystem
                     int rowCount = cmd.ExecuteNonQuery();
                     if (rowCount>0)
                     {
-                        flag = true;
+                        MailService mail = new MailService();
+                       flag =  mail.sendMail(bug.getAssignedTo());
                     }
                     else
                     {
@@ -773,7 +777,11 @@ namespace BugTrackingSystem
             }
         }
 
-
+        /// <summary>
+        /// View All Audit History
+        /// </summary>
+        /// <param name="updatedate"></param>
+        /// <returns></returns>
         public static DataTable getAuditHistory(String updatedate)
         {
             using (DataTable historytable = new DataTable())
@@ -813,6 +821,82 @@ namespace BugTrackingSystem
             }
         }
 
+        public static DataTable getSearch(String searchtext)
+        {
+            using (DataTable historytable = new DataTable())
+            {
+                try
+                {
+                    String sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug  " +
+                        "where bugdesc LIKE '" +
+                        "@searchtext1" +
+                        "%' " +
+                        "or bugdesc LIKE '%" +
+                        "@searchtext2" +
+                        "' " +
+                        "or bugdesc Like '%" +
+                        "@searchtext3" +
+                        "%' " +
+
+                        "or summary Like '%" +
+                        "@searchtext4" +
+                        "%' " +
+                        "or summary Like '" +
+                        "@searchtext5" +
+                        "%' " +
+                        "or summary Like '%" +
+                        "@searchtext6" +
+                        "'" +
+                        "or class Like '@searchtext7'" +
+                        "or method Like '@searchtext8'" +
+                        "or code Like '%" +
+                        "@searchtext9'" +
+                        "or code Like '%" +
+                        "@searchtext10" +
+                        "%'" +
+                        "or code Like '@searchtext11" +
+                        "%";
+
+                    MySqlConnection conn = DBUtils.GetDBConnection();
+                    Debug.WriteLine(sql);
+                    conn.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = sql;
+
+                    MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                    cmd.Parameters.AddWithValue("@searchtext1", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext2", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext3", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext4", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext5", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext6", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext7", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext8", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext9", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext10", searchtext);
+                    cmd.Parameters.AddWithValue("@searchtext11", searchtext);
+
+
+                    Debug.WriteLine(searchtext);
+                    MyAdapter.SelectCommand = cmd;
+
+
+                    MyAdapter.Fill(historytable);
+
+
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Error Message: " + e);
+                    Debug.WriteLine(e.StackTrace);
+                }
+                return historytable;
+            }
+        }
 
        
     }

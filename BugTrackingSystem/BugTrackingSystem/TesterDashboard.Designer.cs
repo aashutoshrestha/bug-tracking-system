@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbupdatebug = new System.Windows.Forms.PictureBox();
             this.lblusername = new System.Windows.Forms.Label();
+            this.pbadd = new System.Windows.Forms.PictureBox();
+            this.logout = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.datagridviewtesterdashboard = new System.Windows.Forms.DataGridView();
             this.txtcomponent = new System.Windows.Forms.TextBox();
@@ -62,16 +65,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.imgbugseverity = new System.Windows.Forms.PictureBox();
             this.imgscreenshot = new System.Windows.Forms.PictureBox();
-            this.pbupdatebug = new System.Windows.Forms.PictureBox();
-            this.pbadd = new System.Windows.Forms.PictureBox();
-            this.logout = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridviewtesterdashboard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbupdatebug)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbadd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewtesterdashboard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,6 +88,16 @@
             this.panel1.Size = new System.Drawing.Size(1198, 35);
             this.panel1.TabIndex = 2;
             // 
+            // pbupdatebug
+            // 
+            this.pbupdatebug.Image = global::BugTrackingSystem.Properties.Resources.button_update_bug;
+            this.pbupdatebug.Location = new System.Drawing.Point(84, 3);
+            this.pbupdatebug.Name = "pbupdatebug";
+            this.pbupdatebug.Size = new System.Drawing.Size(157, 29);
+            this.pbupdatebug.TabIndex = 60;
+            this.pbupdatebug.TabStop = false;
+            this.pbupdatebug.Click += new System.EventHandler(this.pbupdatebug_Click);
+            // 
             // lblusername
             // 
             this.lblusername.AutoSize = true;
@@ -96,6 +108,27 @@
             this.lblusername.Size = new System.Drawing.Size(95, 13);
             this.lblusername.TabIndex = 6;
             this.lblusername.Text = "lblusername";
+            // 
+            // pbadd
+            // 
+            this.pbadd.Image = global::BugTrackingSystem.Properties.Resources._8009622212;
+            this.pbadd.Location = new System.Drawing.Point(12, 3);
+            this.pbadd.Name = "pbadd";
+            this.pbadd.Size = new System.Drawing.Size(43, 29);
+            this.pbadd.TabIndex = 5;
+            this.pbadd.TabStop = false;
+            this.pbadd.Click += new System.EventHandler(this.pbadd_Click);
+            // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.Color.White;
+            this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
+            this.logout.Location = new System.Drawing.Point(1045, 9);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(100, 23);
+            this.logout.TabIndex = 4;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // label1
             // 
@@ -404,42 +437,36 @@
             this.imgscreenshot.TabStop = false;
             this.imgscreenshot.Click += new System.EventHandler(this.imgscreenshot_Click);
             // 
-            // pbupdatebug
+            // button1
             // 
-            this.pbupdatebug.Image = global::BugTrackingSystem.Properties.Resources.button_update_bug;
-            this.pbupdatebug.Location = new System.Drawing.Point(84, 3);
-            this.pbupdatebug.Name = "pbupdatebug";
-            this.pbupdatebug.Size = new System.Drawing.Size(157, 29);
-            this.pbupdatebug.TabIndex = 60;
-            this.pbupdatebug.TabStop = false;
-            this.pbupdatebug.Click += new System.EventHandler(this.pbupdatebug_Click);
+            this.button1.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(864, 609);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 40);
+            this.button1.TabIndex = 60;
+            this.button1.Text = "Open In Text Editor";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pbadd
+            // linkLabel1
             // 
-            this.pbadd.Image = global::BugTrackingSystem.Properties.Resources._8009622212;
-            this.pbadd.Location = new System.Drawing.Point(12, 3);
-            this.pbadd.Name = "pbadd";
-            this.pbadd.Size = new System.Drawing.Size(43, 29);
-            this.pbadd.TabIndex = 5;
-            this.pbadd.TabStop = false;
-            this.pbadd.Click += new System.EventHandler(this.pbadd_Click);
-            // 
-            // logout
-            // 
-            this.logout.BackColor = System.Drawing.Color.White;
-            this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
-            this.logout.Location = new System.Drawing.Point(1045, 9);
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(100, 23);
-            this.logout.TabIndex = 4;
-            this.logout.TabStop = false;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(779, 124);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(128, 20);
+            this.linkLabel1.TabIndex = 61;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open Repository";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // TesterDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 900);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblversion);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.lblbugstatus);
@@ -478,12 +505,12 @@
             this.Load += new System.EventHandler(this.TesterDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridviewtesterdashboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbupdatebug)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbadd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewtesterdashboard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgbugseverity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgscreenshot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,5 +554,7 @@
         private System.Windows.Forms.LinkLabel lbllastupdateon;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pbupdatebug;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

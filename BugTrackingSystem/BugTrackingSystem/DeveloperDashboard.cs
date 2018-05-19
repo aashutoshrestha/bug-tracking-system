@@ -192,5 +192,16 @@ namespace BugTrackingSystem
                 historyAudit.Show();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SourceCodeEditor sourceCode = new SourceCodeEditor(this.richsourcecode.Text);
+            sourceCode.Show();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(bug.getVCURL());
+        }
     }
 }
