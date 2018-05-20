@@ -125,6 +125,9 @@ namespace BugTrackingSystem
                 this.imgbugseverity.Image = Properties.Resources.buggreen;
 
             }
+            else {
+                this.imgbugseverity.Image = Properties.Resources.buggreen;
+            }
 
             
            
@@ -189,6 +192,7 @@ namespace BugTrackingSystem
             {
                 HistoryAudit historyAudit = new HistoryAudit();
                 historyAudit.updatedate = lbllastupdateon.Text;
+                historyAudit.bugid = bug.getBUGID();
                 historyAudit.Show();
             }
         }
@@ -202,6 +206,26 @@ namespace BugTrackingSystem
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(bug.getVCURL());
+        }
+
+        private void imgbugseverity_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbllastupdatedby_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (lbllastupdateon.Text == "Unknown")
+            {
+                MessageBox.Show("No History found");
+            }
+            else
+            {
+                HistoryAudit historyAudit = new HistoryAudit();
+                historyAudit.updatedate = lbllastupdateon.Text;
+                historyAudit.bugid = bug.getBUGID();
+                historyAudit.Show();
+            }
         }
     }
 }

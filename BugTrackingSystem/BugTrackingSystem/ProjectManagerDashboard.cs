@@ -227,6 +227,7 @@ namespace BugTrackingSystem
             {
                 HistoryAudit historyAudit = new HistoryAudit();
                 historyAudit.updatedate = lbllastupdateon.Text;
+                historyAudit.bugid = bug.getBUGID();
                 historyAudit.Show();
             }
         }
@@ -256,14 +257,76 @@ namespace BugTrackingSystem
             sourceCode.Show();
         }
 
+
+        /// <summary>
+        /// Search 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnsearchbug_Click(object sender, EventArgs e)
         {
-            DataTable searchhistory = new DataTable();
-            searchhistory = BugController.getSearch(this.txtsearchbug.Text);
-            dtable = searchhistory;
-            PopulateDataGridPMDashboard();
-            this.Refresh();
+            try
+            {
+                DataTable searchhistory = new DataTable();
+                String searchfor;
+                String search;
+                searchfor = this.cmbsearchfor.GetItemText(this.cmbsearchfor.SelectedItem);
+                switch (searchfor)
+                {
+                   
+                    case "summary":
+                        search = "summary";
+                        searchhistory = BugController.getSearch(search, this.txtsearchbug.Text);
+                        dtable = searchhistory;
+                        Debug.WriteLine("Search query found" + searchhistory.Rows[0][2].ToString());
+                        PopulateDataGridPMDashboard();
+                        this.Refresh();
+                        break;
+                    case "bug description":
+                        search = "bugdesc";
+                        searchhistory = BugController.getSearch(search, this.txtsearchbug.Text);
+                        dtable = searchhistory;
+                        Debug.WriteLine("Search query found" + searchhistory.Rows[0][2].ToString());
+                        PopulateDataGridPMDashboard();
+                        this.Refresh();
+                        break;
+                    case "code":
+                        search = "code";
+                        searchhistory = BugController.getSearch(search, this.txtsearchbug.Text);
+                        dtable = searchhistory;
+                        Debug.WriteLine("Search query found" + searchhistory.Rows[0][2].ToString());
+                        PopulateDataGridPMDashboard();
+                        this.Refresh();
+                        break;
+                    case "class":
+                        search = "class";
+                        searchhistory = BugController.getSearch(search, this.txtsearchbug.Text);
+                        dtable = searchhistory;
+                        Debug.WriteLine("Search query found" + searchhistory.Rows[0][2].ToString());
+                        PopulateDataGridPMDashboard();
+                        this.Refresh();
+                        break;
+                    case "method":
+                        search = "method";
+                        searchhistory = BugController.getSearch(search, this.txtsearchbug.Text);
+                        dtable = searchhistory;
+                        Debug.WriteLine("Search query found" + searchhistory.Rows[0][2].ToString());
+                        PopulateDataGridPMDashboard();
+                        this.Refresh();
+                        break;
+                    default:
+                        MessageBox.Show("Please select a search criteria");
+                        break;
 
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No Data Found");
+                Debug.WriteLine(ex);
+            }
 
         }
 
@@ -275,6 +338,17 @@ namespace BugTrackingSystem
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(bug.getVCURL());
+        }
+
+        private void cmbsearchfor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddProjectComponent addProjectComponent = new AddProjectComponent();
+            addProjectComponent.Show();
         }
 
         private void btnassignbug_Click(object sender, EventArgs e)

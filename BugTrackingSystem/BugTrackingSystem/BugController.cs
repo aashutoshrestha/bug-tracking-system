@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BugTrackingSystem
 {
-    class BugController
+   class BugController
     {
         bool flag = false;
         private System.Collections.ArrayList componentlist;
@@ -598,7 +598,7 @@ namespace BugTrackingSystem
             bool flag = false;
             try
             {
-                String sql = "update tbl_bug set code=@code, status=@status where bug_id = @bug_id";
+                String sql = "update tbl_bug set code=@code, status=@status, version=@version where bug_id = @bug_id";
                 MySqlConnection conn = DBUtils.GetDBConnection();
 
                 conn.Open();
@@ -615,6 +615,7 @@ namespace BugTrackingSystem
                 cmd.Parameters.AddWithValue("@code", bug.getCode());
                 cmd.Parameters.AddWithValue("@status", bug.getStatus());
                 cmd.Parameters.AddWithValue("@bug_id", bug.getBUGID());
+                cmd.Parameters.AddWithValue("@version", bug.getVersion());
                 Debug.WriteLine(bug.getCode() + bug.getStatus()+ bug.getBUGID());
                 int rowCount = cmd.ExecuteNonQuery();
                 if (rowCount > 0)
@@ -701,7 +702,7 @@ namespace BugTrackingSystem
             DataTable historytable = new DataTable();
             try
             {
-                String sql = "SELECT * FROM tbl_history where bug_id=@bug_id ORDER BY updatedate LIMIT 1";
+                String sql = "SELECT * FROM tbl_history where bug_id=@bug_id ORDER BY updatedate DESC LIMIT 1";
                
                 MySqlConnection conn = DBUtils.GetDBConnection();
 
@@ -744,7 +745,7 @@ namespace BugTrackingSystem
             {
                 try
                 {
-                    String sql = "SELECT * FROM tbl_history where bug_id=@bug_id";
+                    String sql = "SELECT * FROM tbl_history where bug_id=@bug_id ORDER by updatedate DESC";
 
                     MySqlConnection conn = DBUtils.GetDBConnection();
 
@@ -821,41 +822,47 @@ namespace BugTrackingSystem
             }
         }
 
-        public static DataTable getSearch(String searchtext)
+
+        /// <summary>
+        /// Search Data
+        /// </summary>
+        /// <param name="searchfor"></param>
+        /// <param name="searchtext"></param>
+        /// <returns></returns>
+        public static DataTable getSearch(String searchfor, String searchtext)
         {
-            using (DataTable historytable = new DataTable())
+            using (DataTable searchtable = new DataTable())
             {
                 try
                 {
-                    String sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug  " +
-                        "where bugdesc LIKE '" +
-                        "@searchtext1" +
-                        "%' " +
-                        "or bugdesc LIKE '%" +
-                        "@searchtext2" +
-                        "' " +
-                        "or bugdesc Like '%" +
-                        "@searchtext3" +
-                        "%' " +
 
-                        "or summary Like '%" +
-                        "@searchtext4" +
-                        "%' " +
-                        "or summary Like '" +
-                        "@searchtext5" +
-                        "%' " +
-                        "or summary Like '%" +
-                        "@searchtext6" +
-                        "'" +
-                        "or class Like '@searchtext7'" +
-                        "or method Like '@searchtext8'" +
-                        "or code Like '%" +
-                        "@searchtext9'" +
-                        "or code Like '%" +
-                        "@searchtext10" +
-                        "%'" +
-                        "or code Like '@searchtext11" +
-                        "%";
+                    String sql = "select * from tbl_bug where bugid>=1";
+
+                    switch (searchfor)
+                    {
+                        case "code":
+                          sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug where code like @searchtext";
+                            break;
+                        case "method":
+                            sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug where method like @searchtext";
+                            break;
+                        case "class":
+                            sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug where class like @searchtext";
+                            break;
+                        case "summary":
+                            sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug where summary like @searchtext";
+                            break;
+                        case "bugdesc":
+                            sql = "select bug_id as id, summary as Summary,submittedby from tbl_bug where bugdesc like @searchtext";
+                            break;
+
+                        default:
+                            sql = "select * from tbl_bug where bugid>=1";
+                            break;
+                    }
+
+
+
 
                     MySqlConnection conn = DBUtils.GetDBConnection();
                     Debug.WriteLine(sql);
@@ -868,25 +875,26 @@ namespace BugTrackingSystem
                     cmd.CommandText = sql;
 
                     MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                    cmd.Parameters.AddWithValue("@searchtext1", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext2", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext3", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext4", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext5", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext6", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext7", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext8", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext9", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext10", searchtext);
-                    cmd.Parameters.AddWithValue("@searchtext11", searchtext);
+                    // cmd.Parameters.AddWithValue("@searchfor", searchfor);
+                    if (searchtext == "") {
+                        MySqlDataReader data = cmd.ExecuteReader();
+                        searchtable.Load(data);
+                    }
+                    else
+                    {
+                        cmd.Parameters.Add("@searchtext", MySqlDbType.VarChar, 200).Value = "%" + searchtext + "%";
+                    }
+
+
 
 
                     Debug.WriteLine(searchtext);
+                    Debug.WriteLine(searchfor);
                     MyAdapter.SelectCommand = cmd;
 
 
-                    MyAdapter.Fill(historytable);
-
+                    MyAdapter.Fill(searchtable);
+                    Debug.WriteLine("Search query found" + searchtable.Rows[0][2].ToString());
 
                 }
                 catch (Exception e)
@@ -894,8 +902,56 @@ namespace BugTrackingSystem
                     Debug.WriteLine("Error Message: " + e);
                     Debug.WriteLine(e.StackTrace);
                 }
-                return historytable;
+                
+                return searchtable;
+              
             }
+        }
+
+
+        public bool addProjectComponent(BugModel bug)
+        {
+            bool flag = false;
+            try
+            {
+               
+                String sql = "INSERT INTO `tbl_component`( `component_name`, `component_desc`, `project_id`, `developerusername`) VALUES (@component_name,@component_desc,@project_id,@developerusername)";
+                MySqlConnection conn = DBUtils.GetDBConnection();
+
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+              
+                Debug.WriteLine("addprojectcomponent Called");
+                cmd.Connection = conn;
+
+                cmd.Parameters.AddWithValue("@component_name", bug.getComponentName());
+                cmd.Parameters.AddWithValue("@component_desc", bug.getcomponentdesc());
+                cmd.Parameters.AddWithValue("@project_id", bug.getprojectid());
+                cmd.Parameters.AddWithValue("@developerusername", bug.getUsername());
+
+                cmd.CommandText = sql;
+                int rowCount = cmd.ExecuteNonQuery();
+
+                if (rowCount > 0)
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Error Message: " + e);
+                Debug.WriteLine(e.StackTrace);
+            }
+            return flag;
+            
         }
 
        

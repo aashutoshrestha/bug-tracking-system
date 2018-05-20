@@ -32,6 +32,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panelMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cmbsearchfor = new System.Windows.Forms.ComboBox();
             this.lblusername = new System.Windows.Forms.Label();
             this.btnsearchbug = new System.Windows.Forms.Button();
             this.txtsearchbug = new System.Windows.Forms.TextBox();
@@ -101,6 +104,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.cmbsearchfor);
             this.panel1.Controls.Add(this.lblusername);
             this.panel1.Controls.Add(this.btnsearchbug);
             this.panel1.Controls.Add(this.txtsearchbug);
@@ -109,6 +115,43 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1219, 33);
             this.panel1.TabIndex = 2;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(553, 9);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(15, 13);
+            this.label19.TabIndex = 41;
+            this.label19.Text = "in";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkGreen;
+            this.button1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(9, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(270, 27);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Add Component/Application";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cmbsearchfor
+            // 
+            this.cmbsearchfor.FormattingEnabled = true;
+            this.cmbsearchfor.Items.AddRange(new object[] {
+            "summary",
+            "bug description",
+            "code",
+            "class",
+            "method"});
+            this.cmbsearchfor.Location = new System.Drawing.Point(586, 5);
+            this.cmbsearchfor.Name = "cmbsearchfor";
+            this.cmbsearchfor.Size = new System.Drawing.Size(121, 21);
+            this.cmbsearchfor.TabIndex = 8;
+            this.cmbsearchfor.SelectedIndexChanged += new System.EventHandler(this.cmbsearchfor_SelectedIndexChanged);
             // 
             // lblusername
             // 
@@ -123,7 +166,7 @@
             // 
             // btnsearchbug
             // 
-            this.btnsearchbug.Location = new System.Drawing.Point(601, 4);
+            this.btnsearchbug.Location = new System.Drawing.Point(713, 4);
             this.btnsearchbug.Name = "btnsearchbug";
             this.btnsearchbug.Size = new System.Drawing.Size(75, 23);
             this.btnsearchbug.TabIndex = 5;
@@ -133,7 +176,7 @@
             // 
             // txtsearchbug
             // 
-            this.txtsearchbug.Location = new System.Drawing.Point(420, 6);
+            this.txtsearchbug.Location = new System.Drawing.Point(376, 6);
             this.txtsearchbug.Name = "txtsearchbug";
             this.txtsearchbug.Size = new System.Drawing.Size(161, 20);
             this.txtsearchbug.TabIndex = 4;
@@ -555,6 +598,7 @@
             // 
             // datagridviewpmdashboard
             // 
+            this.datagridviewpmdashboard.BackgroundColor = System.Drawing.Color.White;
             this.datagridviewpmdashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridviewpmdashboard.Location = new System.Drawing.Point(13, 37);
             this.datagridviewpmdashboard.Name = "datagridviewpmdashboard";
@@ -632,5 +676,8 @@
         private System.Windows.Forms.Label lblusername;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnopenide;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cmbsearchfor;
+        private System.Windows.Forms.Button button1;
     }
 }

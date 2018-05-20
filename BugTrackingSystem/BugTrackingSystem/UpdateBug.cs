@@ -58,6 +58,12 @@ namespace BugTrackingSystem
             historyAudit.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SourceCodeEditor sourceCode = new SourceCodeEditor(this.txtupdatecode.Text);
+            sourceCode.Show();
+        }
+
         private void UpdateBug_Load(object sender, EventArgs e)
         {
             submit.SizeMode = PictureBoxSizeMode.StretchImage;

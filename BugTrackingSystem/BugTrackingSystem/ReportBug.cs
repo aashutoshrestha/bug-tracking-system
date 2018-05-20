@@ -196,5 +196,11 @@ namespace BugTrackingSystem
             string ComponentName = listboxcomponent.GetItemText(listboxcomponent.SelectedItem);
             bug.setComponentID(bc.getComponentID(ComponentName));
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SourceCodeEditor sourceCode = new SourceCodeEditor(this.richtextcodesnippet.Text);
+            sourceCode.Show();
+        }
     }
 }

@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace BugTrackingSystem
 {
-    class UserController
+    public class UserController
     {
 
 

@@ -38,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbllastupdateon = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridhistory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,23 +134,11 @@
             this.label3.TabIndex = 54;
             this.label3.Text = "Last Updated on";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(210, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(352, 42);
-            this.button1.TabIndex = 58;
-            this.button1.Text = "Show ALL History Of This Bug";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // HistoryAudit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 570);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbllastupdatedby);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbllastupdateon);
@@ -183,6 +170,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel lbllastupdateon;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
     }
 }

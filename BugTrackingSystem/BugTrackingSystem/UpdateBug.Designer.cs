@@ -46,6 +46,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtversion = new System.Windows.Forms.TextBox();
             this.submit = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.submit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -219,11 +220,22 @@
             this.submit.TabStop = false;
             this.submit.Click += new System.EventHandler(this.submit_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(37, 546);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Open in Text Editor";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // UpdateBug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 836);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtversion);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.submit);
@@ -271,5 +283,6 @@
         private System.Windows.Forms.PictureBox submit;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtversion;
+        private System.Windows.Forms.Button button1;
     }
 }

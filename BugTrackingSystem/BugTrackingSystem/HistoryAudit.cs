@@ -15,7 +15,7 @@ namespace BugTrackingSystem
     {
         DataTable history;
         public String updatedate;
-        int bugid;
+        public int bugid;
         public HistoryAudit()
         {
             InitializeComponent();
@@ -61,6 +61,7 @@ namespace BugTrackingSystem
                 int index = e.RowIndex;
                 DataGridViewRow selectedrow = datagridhistory.Rows[index];
                 bugid = Convert.ToInt32(selectedrow.Cells[2].Value.ToString());
+                
                 txtpreviousecode.Text = selectedrow.Cells[5].Value.ToString();
                 txtremarks.Text = selectedrow.Cells[7].Value.ToString();
                 lbllastupdatedby.Text = selectedrow.Cells[4].Value.ToString();
@@ -77,13 +78,13 @@ namespace BugTrackingSystem
         public void populatedashboard()
         {
             BugController bc = new BugController();
-            history = BugController.getAuditHistory(updatedate);
+            history = BugController.getHistory(bugid);
             PopulateDataGridHistory();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            history = BugController.getHistory(bugid);
+           
         }
     }
 }

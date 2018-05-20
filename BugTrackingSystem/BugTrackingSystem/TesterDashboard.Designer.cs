@@ -85,7 +85,7 @@
             this.panel1.Controls.Add(this.logout);
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1198, 35);
+            this.panel1.Size = new System.Drawing.Size(1265, 35);
             this.panel1.TabIndex = 2;
             // 
             // pbupdatebug
@@ -103,7 +103,7 @@
             this.lblusername.AutoSize = true;
             this.lblusername.BackColor = System.Drawing.Color.White;
             this.lblusername.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblusername.Location = new System.Drawing.Point(944, 9);
+            this.lblusername.Location = new System.Drawing.Point(1050, 3);
             this.lblusername.Name = "lblusername";
             this.lblusername.Size = new System.Drawing.Size(95, 13);
             this.lblusername.TabIndex = 6;
@@ -123,7 +123,7 @@
             // 
             this.logout.BackColor = System.Drawing.Color.White;
             this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
-            this.logout.Location = new System.Drawing.Point(1045, 9);
+            this.logout.Location = new System.Drawing.Point(1151, 3);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(100, 23);
             this.logout.TabIndex = 4;
@@ -142,6 +142,7 @@
             // 
             // datagridviewtesterdashboard
             // 
+            this.datagridviewtesterdashboard.BackgroundColor = System.Drawing.Color.White;
             this.datagridviewtesterdashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridviewtesterdashboard.Location = new System.Drawing.Point(0, 107);
             this.datagridviewtesterdashboard.Name = "datagridviewtesterdashboard";
@@ -427,6 +428,7 @@
             this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
             this.imgbugseverity.TabIndex = 55;
             this.imgbugseverity.TabStop = false;
+            this.imgbugseverity.Click += new System.EventHandler(this.imgbugseverity_Click);
             // 
             // imgscreenshot
             // 
@@ -464,7 +466,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 900);
+            this.ClientSize = new System.Drawing.Size(1277, 900);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblversion);

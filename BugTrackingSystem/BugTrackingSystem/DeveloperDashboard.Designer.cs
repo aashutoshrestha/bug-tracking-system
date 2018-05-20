@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.lblversion = new System.Windows.Forms.LinkLabel();
             this.label17 = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblusername = new System.Windows.Forms.Label();
             this.logout = new System.Windows.Forms.PictureBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbupdate)).BeginInit();
@@ -83,7 +83,7 @@
             this.newToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1195, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1263, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -130,9 +130,21 @@
             this.panel1.Controls.Add(this.datagridviewdeveloperdashboard);
             this.panel1.Location = new System.Drawing.Point(0, 71);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1191, 807);
+            this.panel1.Size = new System.Drawing.Size(1251, 807);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(791, 54);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(128, 20);
+            this.linkLabel1.TabIndex = 40;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open Repository";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // button1
             // 
@@ -324,6 +336,7 @@
             this.imgbugseverity.Size = new System.Drawing.Size(82, 50);
             this.imgbugseverity.TabIndex = 46;
             this.imgbugseverity.TabStop = false;
+            this.imgbugseverity.Click += new System.EventHandler(this.imgbugseverity_Click);
             // 
             // richsourcecode
             // 
@@ -353,6 +366,7 @@
             this.lbllastupdatedby.TabIndex = 43;
             this.lbllastupdatedby.TabStop = true;
             this.lbllastupdatedby.Text = "Unknown";
+            this.lbllastupdatedby.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbllastupdatedby_LinkClicked);
             // 
             // label4
             // 
@@ -433,6 +447,7 @@
             // 
             // datagridviewdeveloperdashboard
             // 
+            this.datagridviewdeveloperdashboard.BackgroundColor = System.Drawing.Color.White;
             this.datagridviewdeveloperdashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridviewdeveloperdashboard.Location = new System.Drawing.Point(12, 38);
             this.datagridviewdeveloperdashboard.Name = "datagridviewdeveloperdashboard";
@@ -448,7 +463,7 @@
             this.panel2.Controls.Add(this.logout);
             this.panel2.Location = new System.Drawing.Point(0, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1191, 38);
+            this.panel2.Size = new System.Drawing.Size(1251, 38);
             this.panel2.TabIndex = 2;
             // 
             // lblusername
@@ -456,7 +471,7 @@
             this.lblusername.AutoSize = true;
             this.lblusername.BackColor = System.Drawing.Color.White;
             this.lblusername.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblusername.Location = new System.Drawing.Point(941, 3);
+            this.lblusername.Location = new System.Drawing.Point(1006, 3);
             this.lblusername.Name = "lblusername";
             this.lblusername.Size = new System.Drawing.Size(95, 13);
             this.lblusername.TabIndex = 7;
@@ -465,30 +480,18 @@
             // logout
             // 
             this.logout.Image = global::BugTrackingSystem.Properties.Resources.logout;
-            this.logout.Location = new System.Drawing.Point(1072, 3);
+            this.logout.Location = new System.Drawing.Point(1137, 3);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(100, 23);
             this.logout.TabIndex = 5;
             this.logout.TabStop = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(791, 54);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(128, 20);
-            this.linkLabel1.TabIndex = 40;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Open Repository";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // DeveloperDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 880);
+            this.ClientSize = new System.Drawing.Size(1263, 880);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);

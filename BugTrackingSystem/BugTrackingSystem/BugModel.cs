@@ -24,6 +24,41 @@ namespace BugTrackingSystem
         String username,remarks;
        public DataTable dtable;
 
+
+        String projectdesc, componentdesc, developerusername, projectmanager;
+        int project_id;
+
+        public void setprojectid(int projectid)
+        {
+            this.project_id = projectid;
+        }
+
+        public int getprojectid()
+        {
+            return project_id;
+        }
+
+        public void setprojectdesc(String projectdesc)
+        {
+            this.projectdesc = projectdesc;
+        }
+
+        public String getprojectdesc()
+        {
+            return projectdesc;
+        }
+
+        public void setcomponentdesc(String componentdesc)
+        {
+            this.componentdesc = componentdesc;
+        }
+
+        public String getcomponentdesc()
+        {
+            return componentdesc;
+        }
+
+
         public void setRemarks(String remarks)
         {
             this.remarks = remarks;
